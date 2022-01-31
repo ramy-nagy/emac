@@ -1,13 +1,13 @@
 <aside
 class="z-20 hidden w-64 overflow-y-auto bg-white dark:bg-gray-800 md:block flex-shrink-0"
 >    <div class="py-4 text-gray-500">
-        <a class="ml-6 text-lg font-bold text-gray-800 dark:hover:text-gray-200 dark:text-gray-100" href="{{ route('dashboard') }}">
+        <a class="ml-6 text-lg font-bold text-gray-800 dark:hover:text-gray-200 dark:text-gray-100" href="{{ route('dashboard.index') }}">
             Windmill
         </a>
 
         <ul class="mt-6">
             <li class="relative px-6 py-3">
-                <x-nav-link class="dark:hover:text-gray-200 dark:text-gray-100" href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+                <x-nav-link class="dark:hover:text-gray-200 dark:text-gray-100" href="{{ route('dashboard.index') }}" :active="request()->routeIs('dashboard')">
                     <x-slot name="icon">
                         <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round"
                             stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">

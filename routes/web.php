@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DashboardController;
+use App\Http\Livewire\RecDuct;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,13 +19,17 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';
 
 Route::middleware('auth')->group(function () {
+    // Route::get('dashboard/recduct/{id}', [DashboardController::class, 'recduct'])->name('recduct');
+    
+    
+    Route::get('/dashboard/recduct/{id}', RecDuct::class);//->name('recduct');
+
+    Route::resource('dashboard', DashboardController::class)->names('dashboard');
+
     Route::view('about', 'about')->name('about');
 
     Route::get('users', [\App\Http\Controllers\UserController::class, 'index'])->name('users.index');

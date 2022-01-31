@@ -16,6 +16,7 @@ class CreateRecDuctsTable extends Migration
         Schema::create('rec_ducts', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id');
+            $table->foreignId('project_id');
             //Machine data
             $table->string('tag_no')->nulabel();
             $table->text('description')->nulabel();
@@ -49,6 +50,7 @@ class CreateRecDuctsTable extends Migration
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade');
+            $table->foreign('project_id')->references('id')->on('projects')->onUpdate('cascade');
 
         });
     }
