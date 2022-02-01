@@ -80,7 +80,7 @@
     </div>
 --}}
 <h4 class="mb-1 text-lg font-semibold text-gray-600 dark:text-gray-300">
-    Projects ( {{ 0 ?? ''}} )
+    Projects ( {{ $projectCount ?? ''}} )
 </h4>
     @livewire('projects')
     @php    $update = false;    @endphp
@@ -90,7 +90,10 @@
         @include('livewire.create')
     @endif
     <h4 class="mb-1 text-lg font-semibold text-gray-600 dark:text-gray-300">
-        Project ( {{ 3 ?? ''}} )
+        Project 
+        <label class="block text-sm col-md-1">
+            <input type="number" wire:model="LastProject"  class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input">
+        </label>
     </h4>
     
     <nav id="orders-table-tab" class="orders-table-tab app-nav-tabs nav shadow-sm flex-column flex-sm-row mb-4">
@@ -266,6 +269,46 @@
             console.log(thickness[parseInt(this.value)]);
         });
     </script>
+    <script>
+    $("input[type='number']").change(function(){
+        var Width = $("#Width").val();
+        var Depth = $("#Depth").val();
+        var result = ((parseInt(Width)+parseInt(Depth)+(2*15))*2*($("#Length").val()/1000));
+        $( "#Area" ).text(result.toFixed(1));
+    });
+    $('select#Thickness').on('change', function() {
+
+        var result1 = ((parseInt($("#Width").val())+50+parseInt($("#Depth").val())+50)*(.002)*($("#Length").val()));
+        var result2 = ((parseInt($("#Width").val())+100+parseInt($("#Depth").val())+100)*(.002)*($("#Length").val()));
+        if ( this.value == 25 ) {
+            $( "#Area_1_inch" ).text(result1.toFixed(2));
+            $( "#Area_2_inch" ).text(0);
+        }else if(this.value == 50){
+            $( "#Area_2_inch" ).text(result2);
+            $( "#Area_1_inch" ).text(0);
+        }else{
+        $( "#Area_1_inch" ).text(0);
+        $( "#Area_2_inch" ).text(0);
+        }
+    });
+
+    $('select#Cladding').on('change', function() {
+        var resultCladding = 0 ;
+        if ( this.value == 1 ) {
+            if ($("select#Thickness").val() == '') {
+                resultCladding =  $("#Area").text() * 1.006 ;
+                $( "#Cladding_Area" ).text(resultCladding);
+            } else {
+                resultCladding = ($("#Area_1_inch" ).text() * 1.006) + ($("#Area_2_inch" ).text() * 1.006) ;
+                $( "#Cladding_Area" ).text(resultCladding.toFixed(4));
+            }
+        }else{
+            $( "#Cladding_Area" ).text(resultCladding);
+        }
+
+    });
+
+</script>
 @endpush
 </x-app-layout>
 {{-- 30	0.399	3.20

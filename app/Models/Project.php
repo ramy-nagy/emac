@@ -9,7 +9,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Project extends Model
 {
     use HasFactory, SoftDeletes;
-
+    // protected $fillable = ['name', 'description', 'user_id'];
+    protected $guarded = [];
     public function RecDucts()
     {
         return $this->hasMany(RecDuct::class);

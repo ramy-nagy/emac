@@ -10,17 +10,21 @@ use App\Models\RecDuct as Duct;
 class RecDuct extends Component
 {
     use WithPagination;
-    public $searchTerm,
-    $entries = 10,
-    $update = false;
+    protected $paginationTheme = 'bootstrap';   
+    public  $width, $depth, $length, $area,
+            $thermal_thickness, $area_1_inch, $area_2_inch,
+            $cladding_option, $cladding_area,
+            $accoustic_option, $accoustic_length, $accoustic_area,
+            $duct_gage, $thickness, $duct_weight, $pending_distance_per_side;
 
-    public $categories, $name, $description, $category_id;
-    protected $paginationTheme = 'bootstrap';
+
+    public function ductData()
+    {
+        $this->area = 15;
+    }
 
     public function render()
     {
-        $searchTerm = '%'.$this->searchTerm.'%';
-        $entries = $this->entries;
         return view('livewire.rec-duct', [
             'RecDucts' => Auth::user()->RecDucts()->with(['project', 'user'])->latest()->get(),
         ]);
