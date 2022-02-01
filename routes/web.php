@@ -26,7 +26,7 @@ Route::middleware('auth')->group(function () {
     // Route::get('dashboard/recduct/{id}', [DashboardController::class, 'recduct'])->name('recduct');
     
     
-    Route::get('/dashboard/recduct/{id}', RecDuct::class);//->name('recduct');
+    // Route::get('/dashboard/recduct/{id}', RecDuct::class);//->name('recduct');
 
     Route::resource('dashboard', DashboardController::class)->names('dashboard');
 

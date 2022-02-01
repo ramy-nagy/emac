@@ -11,8 +11,10 @@ class DashboardController extends Controller
 
     public function index()
     {
-        $RecDucts = Auth::user()->RecDucts()->with(['project', 'user'])->latest()->paginate(5);
-        return view('dashboard', compact('RecDucts'));
+        //$project = Auth::user()->projects()->with('RecDucts')->latest()->first();
+        //$projects = Auth::user()->projects()->latest()->paginate(1);
+        //$RecDucts = Auth::user()->RecDucts()->with(['project', 'user'])->latest()->paginate(5);
+    return view('dashboard'/*, compact('projects')*/);
     }
 
     public function recduct($id)

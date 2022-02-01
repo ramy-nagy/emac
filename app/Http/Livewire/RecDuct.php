@@ -3,30 +3,26 @@
 namespace App\Http\Livewire;
 
 use Livewire\Component;
-
+use Livewire\WithPagination;
+use DB, Auth;
 use App\Models\RecDuct as Duct;
-use Illuminate\Database\Eloquent\Builder;
-use Rappasoft\LaravelLivewireTables\DataTableComponent;
-use Rappasoft\LaravelLivewireTables\Views\Column;
 
-class RecDuct extends DataTableComponent
+class RecDuct extends Component
 {
-    public function columns(): array
-    {
-        return [
-            Column::make('Name')
-                ->sortable()
-                ->searchable(),
-            Column::make('E-mail', 'email')
-                ->sortable()
-                ->searchable(),
-            Column::make('Verified', 'email_verified_at')
-                ->sortable(),
-        ];
-    }
+    use WithPagination;
+    public $searchTerm,
+    $entries = 10,
+    $update = false;
 
-    public function query(): Builder
+    public $categories, $name, $description, $category_id;
+    protected $paginationTheme = 'bootstrap';
+
+    public function render()
     {
-        return Duct::query();
+        $searchTerm = '%'.$this->searchTerm.'%';
+        $entries = $this->entries;
+        return view('livewire.rec-duct', [
+            'RecDucts' => Auth::user()->RecDucts()->with(['project', 'user'])->latest()->get(),
+        ]);
     }
 }

@@ -46,4 +46,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(RecDuct::class);
     }
+
+    public function projects()
+    {
+        return $this->hasMany(Project::class);
+    }
 }

@@ -9,4 +9,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Project extends Model
 {
     use HasFactory, SoftDeletes;
+
+    public function RecDucts()
+    {
+        return $this->hasMany(RecDuct::class);
+    }
 }

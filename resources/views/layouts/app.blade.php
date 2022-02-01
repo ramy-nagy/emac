@@ -19,15 +19,14 @@
 <body>
     <div class="flex h-screen bg-gray-50 dark:bg-gray-900":class="{ 'overflow-hidden': isSideMenuOpen }">
         <!-- Desktop sidebar -->
-        @include('layouts.navigation')
+        {{-- @include('layouts.navigation') --}}
         <!-- Mobile sidebar -->
         <!-- Backdrop -->
-        @include('layouts.navigation-mobile')
+        {{-- @include('layouts.navigation-mobile') --}}
         <div class="flex flex-col flex-1 w-full">
             @include('layouts.top-menu')
             <main class="h-full overflow-y-auto">
                 <div class="container px-6 mx-auto grid">
-
                     {{ $slot }}
                 </div>
             </main>
@@ -40,6 +39,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
     <script src="{{ asset('js/init-alpine.js') }}"></script>
+    @stack('scripts')
     @livewireScripts
 </body>
 
