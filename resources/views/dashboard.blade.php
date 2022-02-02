@@ -83,12 +83,8 @@
     Projects ( {{ $projectCount ?? ''}} )
 </h4>
     @livewire('projects')
-    @php    $update = false;    @endphp
-    @if($update)
-        @include('livewire.update')
-    @else
-        @include('livewire.create')
-    @endif
+    @livewire('imports.upload-excel')
+
     <h4 class="mb-1 text-lg font-semibold text-gray-600 dark:text-gray-300">
         Project 
         <label class="block text-sm col-md-1">
@@ -262,22 +258,30 @@
 @push('scripts')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
-        var thickness = {30:0.399, 28:0.475, 26:0.551};
-
-        $("#duct_gage").change(function () {
+        const thickness = {30:0.399, 28:0.475, 26:0.551};
+        console.log(thickness["30"]  );
+        $("#duct_gage").on('change', function() {
             $('#thickness').val(thickness[this.value])
-            console.log(thickness[parseInt(this.value)]);
+            console.log(this.value );
+
+            console.log(thickness[$('#duct_gage').val()]  );
+
         });
     </script>
     <script>
     $("input[type='number']").change(function(){
-        var Width = $("#Width").val();
-        var Depth = $("#Depth").val();
-        var result = ((parseInt(Width)+parseInt(Depth)+(2*15))*2*($("#Length").val()/1000));
+        var result = ((parseInt($("#Width").val())+parseInt($("#Depth").val())+(2*15))*2*($("#Length").val()/1000));
         $( "#Area" ).text(result.toFixed(1));
+
+        var resultAccoustic = 0 ;
+        if ( $('select#Accoustic').val() == 1 ) {
+        resultAccoustic = ((parseInt($("#Width").val()) + parseInt($("#Depth").val())) *2* (parseInt($("#Accoustic_Length").val())/1000)) ;
+        $( "#Accoustic_Area" ).text(resultAccoustic.toFixed(2));
+        }else{
+            $( "#Accoustic_Area" ).text(resultAccoustic);
+        }
     });
     $('select#Thickness').on('change', function() {
-
         var result1 = ((parseInt($("#Width").val())+50+parseInt($("#Depth").val())+50)*(.002)*($("#Length").val()));
         var result2 = ((parseInt($("#Width").val())+100+parseInt($("#Depth").val())+100)*(.002)*($("#Length").val()));
         if ( this.value == 25 ) {
@@ -291,7 +295,6 @@
         $( "#Area_2_inch" ).text(0);
         }
     });
-
     $('select#Cladding').on('change', function() {
         var resultCladding = 0 ;
         if ( this.value == 1 ) {
@@ -307,7 +310,15 @@
         }
 
     });
-
+    $('select#Accoustic').on('change', function() {
+        var resultAccoustic = 0 ;
+        if ( this.value == 1 ) {
+        resultAccoustic = ((parseInt($("#Width").val()) + parseInt($("#Depth").val())) *2* (parseInt($("#Accoustic_Length").val())/1000)) ;
+        $( "#Accoustic_Area" ).text(resultAccoustic.toFixed(2));
+        }else{
+            $( "#Accoustic_Area" ).text(resultAccoustic);
+        }
+    });
 </script>
 @endpush
 </x-app-layout>
