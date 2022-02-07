@@ -1,9 +1,4 @@
 <div class="tab-pane fade" id="orders-paid" role="tabpanel" aria-labelledby="orders-paid-tab">
-    @if($update)
-    @include('livewire.update')
-    @else
-    @include('livewire.create')
-    @endif
     <div class="app-card app-card-orders-table mb-5">
         <div class="app-card-body">
             <div class="table-responsive">

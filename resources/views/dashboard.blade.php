@@ -79,25 +79,25 @@
         </div>
     </div>
 --}}
-<h4 class="mb-1 text-lg font-semibold text-gray-600 dark:text-gray-300">
+{{-- <h4 class="mb-1 text-lg font-semibold text-gray-600 dark:text-gray-300">
     Projects ( {{ $projectCount ?? ''}} )
 </h4>
-    @livewire('projects')
-    @livewire('imports.upload-excel')
+    @livewire('projects') --}}
+    {{-- @livewire('imports.upload-excel') --}}
 
-    <h4 class="mb-1 text-lg font-semibold text-gray-600 dark:text-gray-300">
+    {{-- <h4 class="mb-1 text-lg font-semibold text-gray-600 dark:text-gray-300">
         Project 
         <label class="block text-sm col-md-1">
             <input type="number" wire:model="LastProject"  class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input">
         </label>
-    </h4>
+    </h4> --}}
     
     <nav id="orders-table-tab" class="orders-table-tab app-nav-tabs nav shadow-sm flex-column flex-sm-row mb-4">
         <a class="flex-sm-fill text-sm-center nav-link active" id="orders-all-tab" data-bs-toggle="tab"
             href="#orders-all" role="tab" aria-controls="orders-all" aria-selected="true">Total</a>
 
         <a class="flex-sm-fill text-sm-center nav-link" id="orders-paid-tab" data-bs-toggle="tab" href="#orders-paid"
-            role="tab" aria-controls="orders-paid" aria-selected="false">Rec. Duct</a>
+            role="tab" aria-controls="orders-paid" wire:click="store()" aria-selected="false">Rec. Duct</a>
 
         <a class="flex-sm-fill text-sm-center nav-link" id="orders-pending-tab" data-bs-toggle="tab"
             href="#orders-pending" role="tab" aria-controls="orders-pending" aria-selected="false">Round Duct</a>
@@ -123,7 +123,11 @@
         <a class="flex-sm-fill text-sm-center nav-link" id="orders-cancelled-tab" data-bs-toggle="tab"
             href="#orders-cancelled" role="tab" aria-controls="orders-cancelled" aria-selected="false">Bell Mouse</a>
     </nav>
-
+ {{--        @if($update)
+        @include('livewire.update')
+        @else
+        @include('livewire.create')
+        @endif --}}
     <div class="tab-content" id="orders-table-tab-content">
         <div class="tab-pane fade show active" id="orders-all" role="tabpanel" aria-labelledby="orders-all-tab">
             <div class="app-card app-card-orders-table shadow-sm mb-5">

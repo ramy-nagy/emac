@@ -16,7 +16,7 @@ class Projects extends Component
     public function render()
     {
         $projects = Auth::user()->projects()->latest()->paginate(1);
-        $this->LastProject = $projects[0]->id;
+        $this->LastProject = is_array($projects) ? $projects[0]->id: 0;
         return view('livewire.projects.projects', compact('projects'));
     }
 

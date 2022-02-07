@@ -23,8 +23,7 @@ class UploadExcel extends Component
         $file = $request->file('file');
         $path = $request->file->path();
         $extension = $request->file->extension();  
-
-        return $path;
+ 
 
         $collection = (new FastExcel)->import(request()->file('file'));
         return $collection;

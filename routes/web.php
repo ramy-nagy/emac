@@ -29,12 +29,14 @@ Route::middleware('auth')->group(function () {
     // Route::get('/dashboard/recduct/{id}', RecDuct::class);//->name('recduct');
 
     Route::resource('dashboard', DashboardController::class)->names('dashboard');
+    Route::view('settings', 'settings')->name('settings');
+    Route::view('profile', 'profile')->name('profile.show');
 
-    Route::view('about', 'about')->name('about');
+    //Route::view('about', 'about')->name('about');
 
     Route::get('users', [\App\Http\Controllers\UserController::class, 'index'])->name('users.index');
 
-    Route::get('profile', [\App\Http\Controllers\ProfileController::class, 'show'])->name('profile.show');
-    Route::put('profile', [\App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');
+    //Route::get('profile', [\App\Http\Controllers\ProfileController::class, 'show'])->name('profile.show');
+    //Route::put('profile', [\App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');
     
 });
