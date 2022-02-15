@@ -1,26 +1,34 @@
-<div class="tab-pane fade" id="orders-paid" role="tabpanel" aria-labelledby="orders-paid-tab">
-    <div class="app-card app-card-orders-table mb-5">
+<div class="" >
+        @if($update)
+        @include('livewire.update')
+        @else
+        @include('livewire.create')
+        @endif
+    <div class="app-card  mb-5">
         <div class="app-card-body">
             <div class="table-responsive">
                 <table class="table table-bordered mb-0 text-left">
                     <thead>
                         @if($RecDucts->count()) @foreach ($RecDucts as $RecDuct)@endforeach
                         <tr class="dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
-                            <td class="cell" colspan="5" class="table-active">Tag NO : {{$RecDuct->tag_no ?? ''}}</td>
-                            <td class="cell" colspan="5" class="table-active">Description : {{$RecDuct->description ??
+                            <td class="cell" colspan="3" class="table-active">Tag NO : {{$RecDuct->tag_no ?? ''}}</td>
+                            <td class="cell" colspan="3" class="table-active">Description : {{$RecDuct->description ??
                                 ''}}</td>
-                            <td class="cell" colspan="5" class="table-active">location : {{$RecDuct->location ?? ''}}
+                            <td class="cell" colspan="3" class="table-active">location : {{$RecDuct->location ?? ''}}
                             </td>
-                            <td class="cell" colspan="5" class="table-active">Section No : {{$RecDuct->section_no ??
+                            <td class="cell" colspan="3" class="table-active">Section No : {{$RecDuct->section_no ??
                                 ''}}</td>
+                            <td class="cell" colspan="3" class="table-active">Pending = 15mm</td>
+                            <td class="cell" colspan="2" class="table-active"></td>
                         </tr>
-                        <tr class="text-gray-700 dark:text-gray-400">
+                        <tr class="text-gray-700 dark:text-gray-400 dark:bg-gray-800 text-center" >
                             <td class="cell" class="table-active"></td>
                             <td class="cell" colspan="4" class="table-active">Duct Data</td>
                             <td class="cell" colspan="3" class="table-active">Thermal insulation data</td>
                             <td class="cell" colspan="2" class="table-active">Cladding</td>
                             <td class="cell" colspan="3" class="table-active">Accoustic</td>
                             <td class="cell" colspan="3" class="table-active">Duct Gage</td>
+                            <td class="cell" class="table-active">action</td>
                         </tr>
                         @endif
                         <tr class="dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
@@ -40,11 +48,11 @@
                             <th class="cell">Duct Gage</th>
                             <th class="cell">Thickness</th>
                             <th class="cell">Duct weight</th>
-                            <th class="cell">Pending</th>
+                            {{-- <th class="cell">Pending</th> --}}
                             <th class="cell">action</th>
                         </tr>
                     </thead>
-                    <tbody class="divide-y dark:divide-gray-700 dark:bg-gray-800">
+                    <tbody class=" dark:bg-gray-800">
                         @forelse ($RecDucts as $RecDuct)
                         <tr class="text-gray-700 dark:text-gray-400">
                             <td class="cell">{{$RecDuct->id ?? ''}}</td>
@@ -64,7 +72,7 @@
                             <td class="cell">{{$RecDuct->duct_gage ?? ''}}</td>
                             <td class="cell">{{$RecDuct->thickness ?? ''}}</td>
                             <td class="cell">{{$RecDuct->duct_weight ?? ''}}</td>
-                            <td class="cell">{{$RecDuct->pending_distance_per_side ?? ''}}</td>
+                            {{-- <td class="cell">{{$RecDuct->pending_distance_per_side ?? ''}}</td> --}}
                             <td>
                                 <button
                                     class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-purple-600 rounded-lg dark:text-gray-400 focus:outline-none focus:shadow-outline-gray"
@@ -81,6 +89,72 @@
 
                         @endforelse
                     </tbody>
+                    <tfoot class=" dark:bg-gray-800">
+                        <tr class="text-gray-700 dark:text-gray-400"> 
+                            <td colspan="5">
+                                Loss Factor					
+                            </td>
+                            <td colspan="12" class="text-lg">
+                                0
+                            </td>
+                        </tr>
+                        <tr class="text-gray-700 dark:text-gray-400"> 
+                            <td colspan="5">
+                                Total galvanized sheet metal duct [KG]					
+                            </td>
+                            <td colspan="12" class="text-lg">
+                                {{ round($totals->total_duct_weight * 1.15, 2) ?? 0}}
+                            </td>
+                        </tr>
+                        <tr class="text-gray-700 dark:text-gray-400"> 
+                            <td colspan="5">
+                                Total galvanized sheet metal Area [m2]
+                            </td>
+                            <td colspan="12" class="text-lg">
+                                {{ round($totals->total_area * 1.15, 2) ?? 0}}
+                            </td>
+                        </tr>
+                        <tr class="text-gray-700 dark:text-gray-400"> 
+                            <td colspan="5">
+                                Total galvanized sheet metal Area [m2]
+                            </td>
+                            <td colspan="12" class="text-lg">
+                                {{ round($totals->total_length * 1.15, 2) ?? 0}}
+                            </td>
+                        </tr>
+                        <tr class="text-gray-700 dark:text-gray-400"> 
+                            <td colspan="5">
+                                Total insulation  Area [m2] 1 inch thickness
+                            </td>
+                            <td colspan="12" class="text-lg">
+                                {{ round($totals->total_area_1_inch * 1.15, 2) ?? 0}}
+                            </td>
+                        </tr>
+                        <tr class="text-gray-700 dark:text-gray-400"> 
+                            <td colspan="5">
+                                Total insulation  Area [m2] 2 inch thickness
+                            </td>
+                            <td colspan="12" class="text-lg">
+                                {{ round($totals->total_area_2_inch * 1.15, 2) ?? 0}}
+                            </td>
+                        </tr>
+                        <tr class="text-gray-700 dark:text-gray-400"> 
+                            <td colspan="5">
+                                Total Acoustic insulation Area [m2] 					
+                            </td>
+                            <td colspan="12" class="text-lg">
+                                {{ round($totals->total_accoustic_area * 1.15, 2) ?? 0}}
+                            </td>
+                        </tr>
+                        <tr class="text-gray-700 dark:text-gray-400"> 
+                            <td colspan="5">
+                                Total Cladding  Area [m2]										
+                            </td>
+                            <td colspan="12" class="text-lg">
+                                {{ round($totals->total_cladding_area * 1.15, 2) ?? 0}}
+                            </td>
+                        </tr>
+                    </tfoot>
                 </table>
             </div>
             <!--//table-responsive-->

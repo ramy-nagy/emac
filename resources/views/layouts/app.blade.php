@@ -26,7 +26,7 @@
         <div class="flex flex-col flex-1 w-full">
             @include('layouts.top-menu')
             <main class="h-full overflow-y-auto">
-                <div class="container px-6 mx-auto grid">
+                <div class=" px-6 mx-auto grid">
                     {{ $slot }}
                 </div>
             </main>

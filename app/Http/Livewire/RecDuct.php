@@ -23,6 +23,7 @@ class RecDuct extends Component
     {
         return view('livewire.rec-duct', [
             'RecDucts' => Auth::user()->RecDucts()->with(['project', 'user'])->latest()->get(),
+            'totals' => Duct::whereUserId(Auth::id())->Totals()->first(),
         ]);
     }
     public function store(RecDuctRequest $request)

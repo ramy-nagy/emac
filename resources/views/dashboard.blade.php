@@ -123,11 +123,7 @@
         <a class="flex-sm-fill text-sm-center nav-link" id="orders-cancelled-tab" data-bs-toggle="tab"
             href="#orders-cancelled" role="tab" aria-controls="orders-cancelled" aria-selected="false">Bell Mouse</a>
     </nav>
- {{--        @if($update)
-        @include('livewire.update')
-        @else
-        @include('livewire.create')
-        @endif --}}
+
     <div class="tab-content" id="orders-table-tab-content">
         <div class="tab-pane fade show active" id="orders-all" role="tabpanel" aria-labelledby="orders-all-tab">
             <div class="app-card app-card-orders-table shadow-sm mb-5">
@@ -174,7 +170,6 @@
         </div>
         <!--//tab-pane-->
 
-        @livewire('rec-duct')
         <!--//tab-pane-->
 
         <div class="tab-pane fade" id="orders-pending" role="tabpanel" aria-labelledby="orders-pending-tab">
@@ -258,6 +253,7 @@
         <!--//tab-pane-->
     </div>
     <!--//tab-content-->
+        @livewire('rec-duct')
 
 @push('scripts')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
