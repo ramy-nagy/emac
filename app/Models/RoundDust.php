@@ -6,9 +6,10 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use DB;
-class RecDuct extends Model
+class RoundDust extends Model
 {
     use HasFactory, SoftDeletes;
+    protected $table = 'round_dusts';
     protected $guarded  = ['id'];
     public function user()
     {
@@ -18,8 +19,7 @@ class RecDuct extends Model
     {
         return $this->belongsTo(Project::class)->select('id', 'name');
     }
-
-    // scope totals
+    
     public function scopeTotals($query)
     {
         return $query->select(

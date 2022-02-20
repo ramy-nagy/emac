@@ -1,5 +1,5 @@
 <aside
-class="z-20 hidden w-64 overflow-y-auto bg-white dark:bg-gray-800 md:block flex-shrink-0"
+class="z-20 hidden w-64 overflow-y-auto dark:bg-gray-800 md:block flex-shrink-0"
 >    <div class="py-4 text-gray-500">
         <a class="ml-6 text-lg font-bold text-gray-800 dark:hover:text-gray-200 dark:text-gray-100" href="{{ route('dashboard.index') }}">
             Windmill

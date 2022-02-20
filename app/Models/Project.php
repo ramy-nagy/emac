@@ -10,9 +10,14 @@ class Project extends Model
 {
     use HasFactory, SoftDeletes;
     // protected $fillable = ['name', 'description', 'user_id'];
-    protected $guarded = [];
+    protected $guarded = ['id'];
+
     public function RecDucts()
     {
-        return $this->hasMany(RecDuct::class);
+        return $this->hasMany(RecDuct::class, 'project_id');
+    }
+    public function RoundDucts()
+    {
+        return $this->hasMany(RoundDust::class, 'project_id');
     }
 }

@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\RecDuctController;
 use App\Http\Livewire\RecDuct;
 
 /*
@@ -27,12 +28,16 @@ Route::middleware('auth')->group(function () {
     
     
     // Route::get('/dashboard/recduct/{id}', RecDuct::class);//->name('recduct');
+    Route::get('project', [DashboardController::class, 'project'])->name('project');
 
+    Route::post('RecDuct', [DashboardController::class, 'RecDuct'])->name('RecDuct');
+    Route::post('RoundDust', [DashboardController::class, 'RoundDust'])->name('RoundDust');
     Route::resource('dashboard', DashboardController::class)->names('dashboard');
+
     Route::view('settings', 'settings')->name('settings');
     Route::view('profile', 'profile')->name('profile.show');
 
-    //Route::view('about', 'about')->name('about');
+    Route::view('about', 'about')->name('about');
 
     Route::get('users', [\App\Http\Controllers\UserController::class, 'index'])->name('users.index');
 

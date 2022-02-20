@@ -13,6 +13,7 @@ class Projects extends Component
     protected $paginationTheme = 'bootstrap';
 
     public $isOpen = false, $name, $description, $project_id, $LastProject = 0;
+    
     public function render()
     {
         $projects = Auth::user()->projects()->latest()->paginate(1);
