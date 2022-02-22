@@ -20,4 +20,21 @@ class Project extends Model
     {
         return $this->hasMany(RoundDust::class, 'project_id');
     }
+    public function RecFrames()
+    {
+        return $this->hasMany(RecFrame::class, 'project_id');
+    }
+    public function RoundFrames()
+    {
+        return $this->hasMany(RoundFrame::class, 'project_id');
+    }
+
+    public function EndCapRecs()
+    {
+        return $this->hasMany(EndCapRec::class, 'project_id');
+    }
+    public function EndCapRounds()
+    {
+        return $this->hasMany(EndCapRound::class, 'project_id');
+    }
 }

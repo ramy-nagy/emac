@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c6c3f655ae34709ef28a24e56f94c5db",
+    "content-hash": "99476d4dfa00831cccdfb3db97b85543",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -3116,25 +3116,25 @@
         },
         {
             "name": "rap2hpoutre/fast-excel",
-            "version": "v3.1.0",
+            "version": "v3.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/rap2hpoutre/fast-excel.git",
-                "reference": "01e309600b2ead458ce0d4399c70746677b08cca"
+                "reference": "28183f3a90179386bfadcd0083129c247ce49fbe"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/rap2hpoutre/fast-excel/zipball/01e309600b2ead458ce0d4399c70746677b08cca",
-                "reference": "01e309600b2ead458ce0d4399c70746677b08cca",
+                "url": "https://api.github.com/repos/rap2hpoutre/fast-excel/zipball/28183f3a90179386bfadcd0083129c247ce49fbe",
+                "reference": "28183f3a90179386bfadcd0083129c247ce49fbe",
                 "shasum": ""
             },
             "require": {
                 "box/spout": "^3",
-                "illuminate/support": "5.3.* || 5.4.* || 5.5.* || 5.6.* || 5.7.* || 5.8.* || ^6.0 || ^7.0 || ^8.0",
+                "illuminate/support": "5.3.* || 5.4.* || 5.5.* || 5.6.* || 5.7.* || 5.8.* || ^6.0 || ^7.0 || ^8.0|^9.0",
                 "php": "^7.1|^8.0"
             },
             "require-dev": {
-                "illuminate/database": "^6.20.12 || ^7.30.4 || ^8.24.0",
+                "illuminate/database": "^6.20.12 || ^7.30.4 || ^8.24.0|^9.0",
                 "phpunit/phpunit": "^9.5"
             },
             "type": "library",
@@ -3146,12 +3146,12 @@
                 }
             },
             "autoload": {
-                "psr-4": {
-                    "Rap2hpoutre\\FastExcel\\": "src/"
-                },
                 "files": [
                     "src/functions/fastexcel.php"
-                ]
+                ],
+                "psr-4": {
+                    "Rap2hpoutre\\FastExcel\\": "src/"
+                }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -3173,9 +3173,9 @@
             ],
             "support": {
                 "issues": "https://github.com/rap2hpoutre/fast-excel/issues",
-                "source": "https://github.com/rap2hpoutre/fast-excel/tree/v3.1.0"
+                "source": "https://github.com/rap2hpoutre/fast-excel/tree/v3.2.0"
             },
-            "time": "2021-10-13T20:12:19+00:00"
+            "time": "2022-02-09T16:04:44+00:00"
         },
         {
             "name": "rappasoft/laravel-livewire-tables",

@@ -1,0 +1,328 @@
+<div class="tab-pane fade" id="orders-roundframe" role="tabpanel" aria-labelledby="orders-roundframe-tab">
+    <div class="px-4 py-3 mb-8  rounded-lg shadow-md dark:bg-gray-800">
+        Projects NO :: {{$project_id}} <br>
+        Bending Distance :: .1 MM .
+        <form action="{{route('RoundFrame')}}" method="post">
+            @csrf
+            <input type="hidden" value="{{$project_id}}" name="project_id">
+            <div class="row">
+                <label class="block text-sm col-md-1">
+                    <span class="text-gray-700 dark:text-gray-400">Diameter(m)</span>
+                    <input type="number" min="0" id="roundframe-diameter" value="0" name="diameter"
+                        class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input">
+                </label>
+                <label class="block text-sm col-md-1">
+                    <span class="text-gray-700 dark:text-gray-400">Length(m)</span>
+                    <input type="number" min="0" id="roundframe-length" name="length" value="0"
+                        class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input">
+                </label>
+                <label class="block text-sm col-md-1">
+                    <span class="text-gray-700 dark:text-gray-400">Area (m^2)</span>
+                    <input type="number" min="0" value="0" id="roundframe-area" readonly name="area"
+                        class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input">
+                </label>
+                <label class="block text-sm col-md-1">
+                    <span class="text-gray-700 dark:text-gray-400">Thickness</span>
+                    <input type="number"  value="25" id="roundframe-Thickness" readonly name="thermal_thickness"
+                        class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input">
+                </label>
+                <label class="block text-sm col-md-1">
+                    <span class="text-gray-700 dark:text-gray-400">Area 1 inch</span>
+                    <input type="number" min="0" value="0" id="roundframe-Area_1_inch" readonly name="Area_1_inch"
+                        class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input">
+                </label>
+                <label class="block text-sm col-md-1">
+                    <span class="text-gray-700 dark:text-gray-400">Area 2 inch</span>
+                    <input type="number" min="0" value="0" id="roundframe-Area_2_inch" readonly name="Area_2_inch"
+                        class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input">
+                </label>
+                <label class="block text-sm col-md-1">
+                    <span class="text-gray-700 dark:text-gray-400">Cladding</span>
+                    <select id="roundframe-Cladding" name="cladding_option"
+                        class="block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-select focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray">
+                        <option value="0">no</option>
+                        <option value="1">yes</option>
+                    </select>
+                </label>
+                <label class="block text-sm col-md-1">
+                    <span class="text-gray-700 dark:text-gray-400">Area (m^2)</span>
+                    <input type="number" min="0" value="0" id="roundframe-Cladding_Area" readonly name="Cladding_Area"
+                        class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input">
+                </label>
+                <label class="block text-sm col-md-1">
+                    <span class="text-gray-700 dark:text-gray-400">Duct Gage</span>
+                    <select id="roundframe-duct_gage" name="duct_gage"
+                        class="duct_gage block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-select focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray">
+                        <option value="24">24</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                        <option value="13">13</option>
+                        <option value="14">14</option>
+                        <option value="16">16</option>
+                        <option value="18">18</option>
+                        <option value="20">20</option>
+                        <option value="22">22</option>
+                        <option value="26">26</option>
+                        <option value="28">28</option>
+                        <option value="30">30</option>
+                    </select>
+                </label>
+                <label class="block text-sm col-md-1">
+                    <span class="text-gray-700 dark:text-gray-400">Thickness</span>
+                    <input type="number" readonly id="roundframe-thickness" name="thickness" value="0.701"
+                        class="thickness block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input">
+                </label>
+                <label class="block text-sm col-md-1">
+                    <span class="text-gray-700 dark:text-gray-400">weight (Kg)</span>
+                    <input type="number" readonly id="roundframe-duct_weight" name="duct_weight" value="0"
+                        class="duct_weight block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input">
+                </label>
+                <label class="block text-sm col-md-1">
+                    <div class="col-md-2">
+                        <button type="submit" class="btn btn-success mt-4">Save</button>
+                    </div>
+                </label>
+            </div>
+        </form>
+    </div>
+    <div class="app-card app-card-orders-table mb-5">
+        <div class="app-card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered mb-0 text-left">
+                    <thead>
+                        {{-- @if($project->RecDucts->count()) @foreach ($project->RecDucts as
+                        $RecDuct)@endforeach
+                        <tr class="dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
+                            <td class="cell" colspan="3" class="table-active">Tag NO :
+                                {{$RecDuct->tag_no ?? ''}}</td>
+                            <td class="cell" colspan="3" class="table-active">Description :
+                                {{$RecDuct->description ??
+                                ''}}</td>
+                            <td class="cell" colspan="3" class="table-active">location :
+                                {{$RecDuct->location ?? ''}}
+                            </td>
+                            <td class="cell" colspan="3" class="table-active">Section No :
+                                {{$RecDuct->section_no ??
+                                ''}}</td>
+                            <td class="cell" colspan="3" class="table-active">Pending = 15mm</td>
+                            <td class="cell" colspan="2" class="table-active"></td>
+                        </tr>
+                        <tr class="text-gray-700 dark:text-gray-400 dark:bg-gray-800 text-center">
+                            <td class="cell" class="table-active"></td>
+                            <td class="cell" colspan="4" class="table-active">Duct Data</td>
+                            <td class="cell" colspan="3" class="table-active">Thermal insulation
+                                data
+                            </td>
+                            <td class="cell" colspan="2" class="table-active">Cladding</td>
+                            <td class="cell" colspan="3" class="table-active">Accoustic</td>
+                            <td class="cell" colspan="3" class="table-active">Duct Gage</td>
+                            {{-- <td class="cell" class="table-active">action</td>
+                        </tr>
+                        @endif --}}
+                        <tr class="dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
+                            <th class="cell">#</th>
+                            <th class="cell">Diameter</th>
+                            <th class="cell">Length</th>
+                            <th class="cell">Area</th>
+                            <th class="cell">Thickness</th>
+                            <th class="cell">Area 1 inch</th>
+                            <th class="cell">Area 1 inch</th>
+                            <th class="cell">Cladding</th>
+                            <th class="cell">Area</th>
+                            <th class="cell">Duct Gage</th>
+                            <th class="cell">Thickness</th>
+                            <th class="cell">Duct weight</th>
+                            {{-- <th class="cell">Pending</th> --}}
+                            {{-- <th class="cell">action</th> --}}
+                        </tr>
+                    </thead>
+                    <tbody class=" dark:bg-gray-800">
+                        @forelse ($RecDucts->RoundFrames as $RoundFrame)
+                        <tr class="text-gray-700 dark:text-gray-400">
+                            <td class="cell">{{$RoundFrame->id ?? ''}}</td>
+
+                            <td class="cell">{{$RoundFrame->diameter ?? ''}}</td>
+                            <td class="cell">{{$RoundFrame->length ?? ''}}</td>
+                            <td class="cell">{{$RoundFrame->area ?? ''}}</td>
+                            <td class="cell">{{$RoundFrame->thermal_thickness ?? ''}}</td>
+                            <td class="cell">{{$RoundFrame->area_1_inch ?? ''}}</td>
+                            <td class="cell">{{$RoundFrame->area_2_inch ?? ''}}</td>
+                            <td class="cell">{{$RoundFrame->cladding_option == 1 ? 'yes': 'no'}}</td>
+                            <td class="cell">{{$RoundFrame->cladding_area ?? ''}}</td>
+                            <td class="cell">{{$RoundFrame->duct_gage ?? ''}}</td>
+                            <td class="cell">{{$RoundFrame->thickness ?? ''}}</td>
+                            <td class="cell">{{$RoundFrame->duct_weight ?? ''}}</td>
+                            {{-- <td class="cell">{{$RecDuct->pending_distance_per_side ?? ''}}</td>
+                            --}}
+                            {{-- <td>
+                                <button
+                                    class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-purple-600 rounded-lg dark:text-gray-400 focus:outline-none focus:shadow-outline-gray"
+                                    aria-label="Edit">
+                                    <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
+                                        <path
+                                            d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z">
+                                        </path>
+                                    </svg>
+                                </button>
+                            </td> --}}
+                        </tr>
+                        @empty
+
+                        @endforelse
+                    </tbody>
+                    {{-- <tfoot class=" dark:bg-gray-800">
+                        <tr class="text-gray-700 dark:text-gray-400">
+                            <td colspan="5">
+                                Loss Factor
+                            </td>
+                            <td colspan="12" class="text-lg">
+                                15%
+                            </td>
+                        </tr>
+                        <tr class="text-gray-700 dark:text-gray-400">
+                            <td colspan="5">
+                                Total galvanized sheet metal duct [KG]
+                            </td>
+                            <td colspan="12" class="text-lg">
+                                {{ round($totalsRoundDust->total_duct_weight * 1.15, 2) ?? 0}}
+                            </td>
+                        </tr>
+                        <tr class="text-gray-700 dark:text-gray-400">
+                            <td colspan="5">
+                                Total galvanized sheet metal Area [m2]
+                            </td>
+                            <td colspan="12" class="text-lg">
+                                {{ round($totalsRoundDust->total_area * 1.15, 2) ?? 0}}
+                            </td>
+                        </tr>
+                        <tr class="text-gray-700 dark:text-gray-400">
+                            <td colspan="5">
+                                Total galvanized sheet metal Length ( LM )					
+                            </td>
+                            <td colspan="12" class="text-lg">
+                                {{ round($totalsRoundDust->total_length * 1.15, 2) ?? 0}}
+                            </td>
+                        </tr>
+                        <tr class="text-gray-700 dark:text-gray-400">
+                            <td colspan="5">
+                                Total insulation Area [m2] 1 inch thickness
+                            </td>
+                            <td colspan="12" class="text-lg">
+                                {{ round($totalsRoundDust->total_area_1_inch * 1.15, 2) ?? 0}}
+                            </td>
+                        </tr>
+                        <tr class="text-gray-700 dark:text-gray-400">
+                            <td colspan="5">
+                                Total insulation Area [m2] 2 inch thickness
+                            </td>
+                            <td colspan="12" class="text-lg">
+                                {{ round($totalsRoundDust->total_area_2_inch * 1.15, 2) ?? 0}}
+                            </td>
+                        </tr>
+                        <tr class="text-gray-700 dark:text-gray-400">
+                            <td colspan="5">
+                                Total Acoustic insulation Area [m2]
+                            </td>
+                            <td colspan="12" class="text-lg">
+                                {{ round($totalsRoundDust->total_accoustic_area * 1.15, 2) ?? 0}}
+                            </td>
+                        </tr>
+                        <tr class="text-gray-700 dark:text-gray-400">
+                            <td colspan="5">
+                                Total Cladding Area [m2]
+                            </td>
+                            <td colspan="12" class="text-lg">
+                                {{ round($totalsRoundDust->total_cladding_area * 1.15, 2) ?? 0}}
+                            </td>
+                        </tr>
+                    </tfoot> --}}
+                </table>
+            </div>
+            <!--//table-responsive-->
+        </div>
+        <!--//app-card-body-->
+    </div>
+    <!--//app-card-->
+</div>
+@push('scripts')
+    <script>//--=IF(G4>1.5;
+    //--ROUNDUP($R$4*3.14*F4/1000;2)*ROUNDUP(G4/1.5;0)
+    //-- ROUNDUP($R$4*3.14*F4/1000;2)
+        // every input in form
+        $("input[type='number']").change(function(){
+            var roundframe_diameter = parseInt($("#roundframe-diameter").val());
+            var roundframe_length = parseInt($("#roundframe-length").val());
+            console.log(roundframe_diameter);
+            console.log(roundframe_length);
+            if (roundframe_length > 1.5) {
+                var result = Math.round( ((.1 * 3.14) * (roundframe_diameter / 1000))) * Math.round(roundframe_length/1.5);            
+            }else{
+                var result = Math.round(((.1 * 3.14) * (roundframe_diameter / 1000)));
+            }
+
+            // area change
+            $( "#roundframe-area" ).val(result.toFixed(2));
+            // duct_weight change
+            $( "#roundframe-duct_weight" ).val($("#roundframe-area").val() * duct_weight[$("#roundframe-duct_gage").val()]);
+            //-------------------
+            var resultAccoustic = 0 ;
+            if ( $('select#Accoustic').val() == 1 ) {
+            resultAccoustic = ((parseInt($("#Width").val()) + parseInt($("#Depth").val())) *2* (parseInt($("#Accoustic_Length").val())/1000)) ;
+                $( "#Accoustic_Area" ).val(resultAccoustic.toFixed(2));
+            }else{
+                $( "#Accoustic_Area" ).val(resultAccoustic);
+            }
+        });
+        $("#roundframe-duct_gage").on('change', function() {
+            // thickness duct_weight change in  duct_gage change
+            $('#roundframe-thickness').val(thickness[this.value]);
+            $( "#roundframe-duct_weight" ).val($("#roundframe-area").val() * duct_weight[$(".roundframe-duct_gage").val()]);
+        });
+        // --------------------------------
+        $('select#roundframe-Thickness').on('change', function() {
+            var roundframe_diameter = parseInt($("#roundframe-diameter").val());
+            var roundframe_length = parseInt($("#roundframe-length").val());
+            var result1 = ( ( 3.14 *( Math.pow(((roundframe_diameter + this.value * 2 ) / 1000),2 ) /4)) * roundframe_length );
+            //var result2 = ( ( 3.14 *( Math.pow(((roundframe_diameter + this.value * 2 ) / 1000),2 ) /4)) * roundframe_length );
+            if ( this.value == 25 ) {
+                $( "#roundframe-Area_1_inch" ).val(result1.toFixed(2));
+                $( "#roundframe-Area_2_inch" ).val(0);
+            }else if(this.value == 50){
+                $( "#roundframe-Area_2_inch" ).val(result1);
+                $( "#roundframe-Area_1_inch" ).val(0);
+            }else{
+                $( "#roundframe-Area_1_inch" ).val(0);
+                $( "#roundframe-Area_2_inch" ).val(0);
+            }
+        });
+        // -----------------------------------
+        $('select#roundframe-Cladding').on('change', function() {
+            var resultCladding = 0 ;
+            if ( this.value == 1 ) {
+                if ($("select#roundframe-Thickness").val() == '') {
+                    resultCladding =  $("#roundframe-area").val() * 1.006 ;
+                    $( "#roundframe-Cladding_Area" ).val(resultCladding);
+                } else {
+                    resultCladding = ($("#roundframe-Area_1_inch" ).val() * 1.006) + ($("#roundframe-Area_2_inch" ).val() * 1.006) ;
+                    $( "#roundframe-Cladding_Area" ).val(resultCladding.toFixed(4));
+                }
+            }else{
+                $( "#roundframe-Cladding_Area" ).val(resultCladding);
+            }
+        });
+        // --------------------------------------=IF(M9="Yes";ROUNDUP((3.14*E9+$S$4*2)*N9/1000;2);0)
+        $('select#roundframe-Accoustic').on('change', function() {
+            var resultAccoustic = 0 ;
+            var roundframe_diameter = parseInt($("#roundframe-diameter").val());
+            var roundframe_Accoustic_Length = parseInt($("#roundframe-Accoustic_Length").val());
+
+            if ( this.value == 1 ) {
+            resultAccoustic = ((3.14 * roundframe_diameter + 15 * 2) * roundframe_Accoustic_Length / 1000 );
+            $( "#roundframe-Accoustic_Area" ).val(resultAccoustic.toFixed(2));
+            }else{
+                $( "#roundframe-Accoustic_Area" ).val(resultAccoustic);
+            }
+        });
+    </script>
+@endpush

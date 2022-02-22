@@ -28,12 +28,19 @@ Route::middleware('auth')->group(function () {
     
     
     // Route::get('/dashboard/recduct/{id}', RecDuct::class);//->name('recduct');
-    Route::get('project', [DashboardController::class, 'project'])->name('project');
+    Route::get('project',   [DashboardController::class, 'project'])->name('project');
+    Route::get('export',    [DashboardController::class, 'export'])->name('export');
+    
+    Route::post('RecDuct',      [DashboardController::class, 'RecDuct'])->name('RecDuct');
+    Route::post('RoundDust',    [DashboardController::class, 'RoundDust'])->name('RoundDust');
+    Route::post('RecFrame',     [DashboardController::class, 'RecFrame'])->name('RecFrame');
+    Route::post('RoundFrame',   [DashboardController::class, 'RoundFrame'])->name('RoundFrame');
+    Route::post('EndCapRec',    [DashboardController::class, 'EndCapRec'])->name('EndCapRec');
+    Route::post('EndCapRound',  [DashboardController::class, 'EndCapRound'])->name('EndCapRound');
 
-    Route::post('RecDuct', [DashboardController::class, 'RecDuct'])->name('RecDuct');
-    Route::post('RoundDust', [DashboardController::class, 'RoundDust'])->name('RoundDust');
+    
     Route::resource('dashboard', DashboardController::class)->names('dashboard');
-
+    
     Route::view('settings', 'settings')->name('settings');
     Route::view('profile', 'profile')->name('profile.show');
 

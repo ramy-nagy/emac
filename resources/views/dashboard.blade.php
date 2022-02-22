@@ -23,52 +23,40 @@
     <h6 class="my-2 text-2xl font-semibold text-gray-700 dark:text-gray-200">
         Project NO ( {{ $project_id ?? 0}} ) Name :: {{ $RecDucts->name ?? ''}} - Description ::
         {{$RecDucts->description ?? ''}} - Created_at :: {{$RecDucts->created_at ?? ''}}
+        <a href="{{route('export')}}" target="_blank" class="col-md-1 btn btn-success"  rel="noopener noreferrer">Export</a>
     </h6>
     <nav id="orders-table-tab" class="orders-table-tab app-nav-tabs nav shadow-sm flex-column flex-sm-row mb-4">
         <a class="flex-sm-fill text-sm-center nav-link active" id="orders-all-tab" data-bs-toggle="tab"
             href="#orders-all" role="tab" aria-controls="orders-all" aria-selected="true">Total</a>
 
         <a class="flex-sm-fill text-sm-center nav-link" id="orders-paid-tab" data-bs-toggle="tab" href="#orders-paid"
-            role="tab" aria-controls="orders-paid" aria-selected="false">Rec.
-            Duct</a>
+            role="tab" aria-controls="orders-paid" aria-selected="false">Rec.Duct</a>
 
         <a class="flex-sm-fill text-sm-center nav-link " id="orders-pending-tab" data-bs-toggle="tab"
-            href="#orders-pending" role="tab" aria-controls="orders-pending" aria-selected="true">Round
-            Duct</a>
-
-        <a class="flex-sm-fill text-sm-center nav-link" id="orders-cancelled-tab" data-bs-toggle="tab"
-            href="#orders-cancelled" role="tab" aria-controls="orders-cancelled" aria-selected="false">Fitting</a>
+            href="#orders-pending" role="tab" aria-controls="orders-pending" aria-selected="true">Round.Duct</a>
 
         <a class="flex-sm-fill text-sm-center nav-link" id="orders-cancelled-tab" data-bs-toggle="tab"
             href="#orders-cancelled" role="tab" aria-controls="orders-cancelled" aria-selected="false">Rec.Frame</a>
 
-        <a class="flex-sm-fill text-sm-center nav-link" id="orders-cancelled-tab" data-bs-toggle="tab"
-            href="#orders-cancelled" role="tab" aria-controls="orders-cancelled" aria-selected="false">Round
-            Frame</a>
+        <a class="flex-sm-fill text-sm-center nav-link" id="orders-roundframe-tab" data-bs-toggle="tab"
+            href="#orders-roundframe" role="tab" aria-controls="orders-roundframe" aria-selected="true">Round.Frame</a>
 
-        <a class="flex-sm-fill text-sm-center nav-link" id="orders-cancelled-tab" data-bs-toggle="tab"
-            href="#orders-cancelled" role="tab" aria-controls="orders-cancelled" aria-selected="false">End
-            Cap
-            Rec</a>
-
-        <a class="flex-sm-fill text-sm-center nav-link" id="orders-cancelled-tab" data-bs-toggle="tab"
-            href="#orders-cancelled" role="tab" aria-controls="orders-cancelled" aria-selected="false">End
-            Cap
-            Round</a>
-
-        <a class="flex-sm-fill text-sm-center nav-link" id="orders-cancelled-tab" data-bs-toggle="tab"
-            href="#orders-cancelled" role="tab" aria-controls="orders-cancelled" aria-selected="false">Air
-            outlet Plenum</a>
-
-        <a class="flex-sm-fill text-sm-center nav-link" id="orders-cancelled-tab" data-bs-toggle="tab"
-            href="#orders-cancelled" role="tab" aria-controls="orders-cancelled" aria-selected="false">Bell
-            Mouse</a>
+        <a class="flex-sm-fill text-sm-center nav-link" id="orders-end-cap-rec-tab" data-bs-toggle="tab"
+            href="#orders-end-cap-rec" role="tab" aria-controls="orders-end-cap-rec" aria-selected="true">End.Cap.Rec</a>
+            
+        <a class="flex-sm-fill text-sm-center nav-link" id="orders-end-cap-round-tab" data-bs-toggle="tab"
+            href="#orders-end-cap-round" role="tab" aria-controls="orders-end-cap-round" aria-selected="true">End.Cap.Round</a>
+            
     </nav>
 
     <div class="tab-content" id="orders-table-tab-content">
-        @include('total')
-        @include('Rec-Duct')
-        @include('Round-Duct')
+        @include('sheets.total')
+        @include('sheets.Rec-Duct')
+        @include('sheets.Round-Duct')
+        @include('sheets.Rec-Frame')
+        @include('sheets.Round-Frame')
+        @include('sheets.End-Cap-Rec')
+        @include('sheets.End-Cap-Round')
         {{-- <div class="tab-pane fade" id="orders-paid" role="tabpanel" aria-labelledby="orders-paid-tab">
             <div class="app-card app-card-orders-table mb-5">
                 <div class="app-card-body">
@@ -81,19 +69,6 @@
             </div>
             <!--//app-card-->
         </div> --}}
-        <!--//tab-pane-->
-        <div class="tab-pane fade" id="orders-cancelled" role="tabpanel" aria-labelledby="orders-cancelled-tab">
-            <div class="app-card app-card-orders-table mb-5">
-                <div class="app-card-body">
-                    <div class="table-responsive">
-                    </div>
-                    <!--//table-responsive-->
-                </div>
-                <!--//app-card-body-->
-            </div>
-            <!--//app-card-->
-        </div>
-        <!--//tab-pane-->
     </div>
 
     {{-- <div class="my-4 w-full overflow-hidden rounded-lg shadow-xs">
