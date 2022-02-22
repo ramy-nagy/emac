@@ -1,9 +1,9 @@
 <div class="row w-full rounded-lg shadow-md my-6 ">
     <div class="w-full overflow-x-auto">
         @if($isOpen)
-            @include('livewire.projects.update')
+        @include('livewire.projects.update')
         @else
-            @include('livewire.projects.create')
+        @include('livewire.projects.create')
         @endif
         <h6 class="my-1 text-2xl font-semibold text-gray-700 dark:text-gray-200">
             Projects ({{ $projects->total() ?? 0 }})
@@ -43,7 +43,8 @@
                         <td class="px-4 py-3 text-sm">{{ $project->updated_at ?? ''}}</td>
                         <td class="px-4 py-3">
                             <div class="flex items-center space-x-4 text-sm">
-                                {{-- <button @if ($isOpen) wire:click="store()" @else wire:click="$toggle('isOpen')" @endif
+                                {{-- <button @if ($isOpen) wire:click="store()" @else wire:click="$toggle('isOpen')"
+                                    @endif
                                     class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-purple-600 rounded-lg dark:text-gray-400 focus:outline-none focus:shadow-outline-gray"
                                     aria-label="Edit">
                                     @if (!$isOpen)

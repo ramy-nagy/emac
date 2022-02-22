@@ -18,7 +18,7 @@ class Projects extends Component
     {
         $projects = Auth::user()->projects()->latest()->paginate(1);
         $this->LastProject = is_array($projects) ? $projects[0]->id: 0;
-        return view('livewire.projects.projects', compact('projects'));
+        return view('livewire.projects.index', compact('projects'));
     }
 
     public function edit($id){

@@ -19,12 +19,14 @@ class DashboardController extends Controller
 
     public function index()
     {
+        if (Auth::user()->role == 'admin')
+        return redirect('admin/dashboard');
+
         $projects = Auth::user()->projects()->latest()->get();
-        if ($projects) {
-            $project_id = $projects[0]->id;
-        }else {
-            $project_id = 0;
-        }
+        if ($projects->isEmpty())
+        return redirect('projects');
+        
+        $project_id = $projects[0]->id;
         $RecDucts = Project::whereId($project_id)->with(['RecDucts', 'RoundDucts',
             'RecFrames', 'RoundFrames', 'EndCapRecs', 'EndCapRounds'])->first();
         $totals = RecDuct::whereUserId(Auth::id())->where('project_id', $project_id)->Totals()->first();
@@ -73,7 +75,6 @@ class DashboardController extends Controller
             return redirect()->back()->with(['type'=>'error','message'=>"Something goes wrong while creating!!"]);
         }
     }
-
     public function RoundDust(Request $request)
     {
        //return   $request->all();
@@ -114,7 +115,6 @@ class DashboardController extends Controller
             return redirect()->back()->with(['type'=>'error','message'=>"Something goes wrong while creating!!"]);
         }
     }
-
     public function RecFrame(Request $request)
     {
        // return   $request->all();
@@ -190,7 +190,6 @@ class DashboardController extends Controller
             return redirect()->back()->with(['type'=>'error','message'=>"Something goes wrong while creating!!"]);
         }
     }
-
     public function EndCapRec(Request $request)
     {
         //return   $request->all();
@@ -254,8 +253,8 @@ class DashboardController extends Controller
     
     public function export()
     {
-        $projects = Auth::user()->projects()->latest()->get();
-        $project_id = $projects[0]->id;
+        //$projects = Auth::user()->projects()->latest()->get();
+        //$project_id = $projects[0]->id;
         return $RecDucts = Project::whereId($project_id)->with(['RecDucts', 'RoundDucts', 'RecFrames'])->first();
 
         // Export all users

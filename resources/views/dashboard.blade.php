@@ -2,14 +2,20 @@
     <h2 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
         Dashboard
     </h2>
+
     <hr>
-    <form action="{{ route("project") }}" method="Get" enctype="multipart/form-data">
-        @csrf
-        <div class="col-md-6 my-1">
+    <h2 class="mt-3 text-2xl font-semibold text-gray-700 dark:text-gray-200">
+        <a href="{{url('/projects')}}" target="_blank" rel="noopener noreferrer">
+            Projects
+        </a>
+    </h2>
+    <div class="col-md-6">
+        <form action="{{route("project") }}" method="get" enctype="multipart/form-data">
+            @csrf
             <div class="form-group">
                 <label for="country"></label>
                 <select name="project_id" id="project" onchange="this.form.submit()"
-                    class="block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-select focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray">
+                    class="block w-full text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-select focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray">
                     <option value="">Please Select A Project</option>
                     @foreach($projects as $project)
                     <option value="{{ $project->id }}">
@@ -18,12 +24,14 @@
                     @endforeach
                 </select>
             </div>
-        </div>
-    </form>
+        </form>
+    </div>
+
     <h6 class="my-2 text-2xl font-semibold text-gray-700 dark:text-gray-200">
         Project NO ( {{ $project_id ?? 0}} ) Name :: {{ $RecDucts->name ?? ''}} - Description ::
         {{$RecDucts->description ?? ''}} - Created_at :: {{$RecDucts->created_at ?? ''}}
-        <a href="{{route('export')}}" target="_blank" class="col-md-1 btn btn-success"  rel="noopener noreferrer">Export</a>
+        <a href="{{route('export')}}" target="_blank" class="col-md-1 btn btn-success"
+            rel="noopener noreferrer">Export</a>
     </h6>
     <nav id="orders-table-tab" class="orders-table-tab app-nav-tabs nav shadow-sm flex-column flex-sm-row mb-4">
         <a class="flex-sm-fill text-sm-center nav-link active" id="orders-all-tab" data-bs-toggle="tab"
@@ -42,11 +50,13 @@
             href="#orders-roundframe" role="tab" aria-controls="orders-roundframe" aria-selected="true">Round.Frame</a>
 
         <a class="flex-sm-fill text-sm-center nav-link" id="orders-end-cap-rec-tab" data-bs-toggle="tab"
-            href="#orders-end-cap-rec" role="tab" aria-controls="orders-end-cap-rec" aria-selected="true">End.Cap.Rec</a>
-            
+            href="#orders-end-cap-rec" role="tab" aria-controls="orders-end-cap-rec"
+            aria-selected="true">End.Cap.Rec</a>
+
         <a class="flex-sm-fill text-sm-center nav-link" id="orders-end-cap-round-tab" data-bs-toggle="tab"
-            href="#orders-end-cap-round" role="tab" aria-controls="orders-end-cap-round" aria-selected="true">End.Cap.Round</a>
-            
+            href="#orders-end-cap-round" role="tab" aria-controls="orders-end-cap-round"
+            aria-selected="true">End.Cap.Round</a>
+
     </nav>
 
     <div class="tab-content" id="orders-table-tab-content">
@@ -105,7 +115,7 @@
             });
     </script> --}}
     <script>
-        $(document).ready(function() {
+        $(document).ready(function() { 
             calc_total();
         });
         function calc_total(){

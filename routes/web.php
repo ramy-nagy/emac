@@ -1,7 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\DashboardController;
+
+
 use App\Http\Controllers\RecDuctController;
 use App\Http\Livewire\RecDuct;
 
@@ -31,6 +34,12 @@ Route::middleware('auth')->group(function () {
     Route::get('project',   [DashboardController::class, 'project'])->name('project');
     Route::get('export',    [DashboardController::class, 'export'])->name('export');
     
+    // projects
+    Route::get('/projects', function () {
+        return view('projects');
+    });
+
+    // sheets route
     Route::post('RecDuct',      [DashboardController::class, 'RecDuct'])->name('RecDuct');
     Route::post('RoundDust',    [DashboardController::class, 'RoundDust'])->name('RoundDust');
     Route::post('RecFrame',     [DashboardController::class, 'RecFrame'])->name('RecFrame');
@@ -38,16 +47,24 @@ Route::middleware('auth')->group(function () {
     Route::post('EndCapRec',    [DashboardController::class, 'EndCapRec'])->name('EndCapRec');
     Route::post('EndCapRound',  [DashboardController::class, 'EndCapRound'])->name('EndCapRound');
 
-    
-    Route::resource('dashboard', DashboardController::class)->names('dashboard');
-    
-    Route::view('settings', 'settings')->name('settings');
-    Route::view('profile', 'profile')->name('profile.show');
+
+    // profile for users
+    Route::get('profile',  [UserController::class, 'profile'])->name('profile.show');
+
+    // setting 
+    Route::get('settings', [UserController::class, 'settings'])->name('settings');
+    Route::POST('settings', [UserController::class, 'settings_store'])->name('settings.store');
+
 
     Route::view('about', 'about')->name('about');
 
-    Route::get('users', [\App\Http\Controllers\UserController::class, 'index'])->name('users.index');
+    // admins 
+    Route::get('admin/dashboard', [UserController::class, 'admin'])->name('admin.dashboard');
 
+    // resource for dashboard
+    Route::resource('dashboard', DashboardController::class)->names('dashboard');
+    
+    //Route::get('users', [\App\Http\Controllers\UserController::class, 'index'])->name('users.index');
     //Route::get('profile', [\App\Http\Controllers\ProfileController::class, 'show'])->name('profile.show');
     //Route::put('profile', [\App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');
     

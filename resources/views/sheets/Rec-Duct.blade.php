@@ -279,9 +279,9 @@
         <!--//app-card-body-->
     </div>
 </div>
-@push('scripts')        
-    <script>
-        // every input in form
+@push('scripts')
+<script>
+    // every input in form
         $("input[type='number']").change(function(){
             var result = ((parseInt($("#Width").val())+parseInt($("#Depth").val())+(2*15))*2*($("#Length").val()/1000));
             // area change
@@ -342,5 +342,5 @@
                 $( "#Accoustic_Area" ).val(resultAccoustic);
             }
         });
-    </script>
+</script>
 @endpush
