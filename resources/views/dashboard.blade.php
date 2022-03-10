@@ -30,8 +30,9 @@
     <h6 class="my-2 text-2xl font-semibold text-gray-700 dark:text-gray-200">
         Project NO ( {{ $project_id ?? 0}} ) Name :: {{ $RecDucts->name ?? ''}} - Description ::
         {{$RecDucts->description ?? ''}} - Created_at :: {{$RecDucts->created_at ?? ''}}
-        <a href="{{route('export')}}" target="_blank" class="col-md-1 btn btn-success"
-            rel="noopener noreferrer">Export</a>
+        {{-- <br> <a href="{{route('export')}}" target="_blank" class="col-md-1 mt-1 btn btn-success"
+            rel="noopener noreferrer">Export</a> --}}
+            <br>
     </h6>
     <nav id="orders-table-tab" class="orders-table-tab app-nav-tabs nav shadow-sm flex-column flex-sm-row mb-4">
         <a class="flex-sm-fill text-sm-center nav-link active" id="orders-all-tab" data-bs-toggle="tab"

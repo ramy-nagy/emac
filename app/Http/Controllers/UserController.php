@@ -22,10 +22,7 @@ class UserController extends Controller
         return view('admin.dashboard', compact('users'));
     }
 
-    public function profile()
-    {
-        return view('users.profile');
-    }  
+
 
     public function settings()
     {

@@ -29,9 +29,9 @@ class DashboardController extends Controller
         $project_id = $projects[0]->id;
         $RecDucts = Project::whereId($project_id)->with(['RecDucts', 'RoundDucts',
             'RecFrames', 'RoundFrames', 'EndCapRecs', 'EndCapRounds'])->first();
-        $totals = RecDuct::whereUserId(Auth::id())->where('project_id', $project_id)->Totals()->first();
-        $totalsRoundDust = RoundDust::whereUserId(Auth::id())->where('project_id', $project_id)->Totals()->first();
-        return view('dashboard', compact('projects', 'totals', 'project_id', 'RecDucts', 'totalsRoundDust'));
+        //$totals = RecDuct::whereUserId(Auth::id())->where('project_id', $project_id)->Totals()->first();
+        //$totalsRoundDust = RoundDust::whereUserId(Auth::id())->where('project_id', $project_id)->Totals()->first();
+        return view('dashboard', compact('projects', 'project_id', 'RecDucts'));
     }
 
     public function recduct(Request $request)
@@ -251,14 +251,13 @@ class DashboardController extends Controller
     }
     
     
-    public function export()
+    public function export($model, $id)
     {
-        //$projects = Auth::user()->projects()->latest()->get();
-        //$project_id = $projects[0]->id;
-        return $RecDucts = Project::whereId($project_id)->with(['RecDucts', 'RoundDucts', 'RecFrames'])->first();
-
-        // Export all users
-        (new FastExcel($RecDucts))->export('file.xlsx');
+        $models = Project::whereId($id)->with($model)->get();
+        foreach ($models as $key => $value) {
+            $excel  = $value->$model;
+        }
+        return (new FastExcel($excel))->download('d.xlsx');
     }
 
     public function create()
@@ -286,8 +285,19 @@ class DashboardController extends Controller
         //
     }
 
-    public function destroy($id)
+    public function delete($model, $id)
     {
-        //
+        try{
+            RecDuct::find($id)->delete();
+            return redirect()->back()->with(['type'=>'success','message'=> 'Deleted Successfully!!']);
+        }catch(\Exception $e){
+            return redirect()->back()->with(['type'=>'error','message'=> 'Something goes wrong while deleting!!']);
+        }
+    }
+
+    public function destroy($id, $model)
+    {
+        return $id;
+        User::destroy(1);
     }
 }

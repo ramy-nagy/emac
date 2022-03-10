@@ -303,7 +303,7 @@
         $("#duct_gage").on('change', function() {
             // thickness duct_weight change in  duct_gage change
             $('#thickness').val(thickness[this.value]);
-            $( "#duct_weight" ).val($("#Area").val() * duct_weight[$("#duct_gage").val()]);
+            $( "#rec-frame-duct_weight" ).val($("#Area").val() * duct_weight[$("#duct_gage").val()]);
         });
         // ---------------------
         // =IF(I3=50;

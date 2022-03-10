@@ -164,8 +164,11 @@
                 <button class="align-middle rounded-full focus:shadow-outline-purple focus:outline-none"
                     @click="toggleProfileMenu" @keydown.escape="closeProfileMenu" aria-label="Account"
                     aria-haspopup="true">
+                    @php
+                        $profile = auth()->user()->getFirstMediaUrl('images', 'thumb') ;
+                    @endphp
                     <img class="object-cover w-8 h-8 rounded-full"
-                        src="https://images.unsplash.com/photo-1502378735452-bc7d86632805?ixlib=rb-0.3.5&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=200&amp;fit=max&amp;s=aa3a807e1bbdfd4364d1f449eaa96d82"
+                    @if($profile) src="{{$profile}}" @else src="{{ asset('images/avatar/avatar-illustrated-01.webp')}}" @endif
                         alt="" aria-hidden="true">
                 </button>
                 

@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DashboardController;
 
 
@@ -32,7 +33,7 @@ Route::middleware('auth')->group(function () {
     
     // Route::get('/dashboard/recduct/{id}', RecDuct::class);//->name('recduct');
     Route::get('project',   [DashboardController::class, 'project'])->name('project');
-    Route::get('export',    [DashboardController::class, 'export'])->name('export');
+    Route::get('dashboard/{model}/export/{id}',    [DashboardController::class, 'export'])->name('export');
     
     // projects
     Route::get('/projects', function () {
@@ -47,9 +48,9 @@ Route::middleware('auth')->group(function () {
     Route::post('EndCapRec',    [DashboardController::class, 'EndCapRec'])->name('EndCapRec');
     Route::post('EndCapRound',  [DashboardController::class, 'EndCapRound'])->name('EndCapRound');
 
-
     // profile for users
-    Route::get('profile',  [UserController::class, 'profile'])->name('profile.show');
+    Route::get('profile',  [ProfileController::class, 'show'])->name('profile.show');
+    Route::put('profile',  [ProfileController::class, 'update'])->name('profile.update');
 
     // setting 
     Route::get('settings', [UserController::class, 'settings'])->name('settings');
@@ -62,6 +63,7 @@ Route::middleware('auth')->group(function () {
     Route::get('admin/dashboard', [UserController::class, 'admin'])->name('admin.dashboard');
 
     // resource for dashboard
+    Route::get('dashboard/{model}/delete/{id}',[DashboardController::class, 'delete'])->name('delete');
     Route::resource('dashboard', DashboardController::class)->names('dashboard');
     
     //Route::get('users', [\App\Http\Controllers\UserController::class, 'index'])->name('users.index');

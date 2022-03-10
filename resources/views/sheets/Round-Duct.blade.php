@@ -200,7 +200,7 @@
 
                         @endforelse
                     </tbody>
-                    <tfoot class=" dark:bg-gray-800">
+                    {{-- <tfoot class=" dark:bg-gray-800">
                         <tr class="text-gray-700 dark:text-gray-400">
                             <td colspan="5">
                                 Loss Factor
@@ -265,7 +265,7 @@
                                 {{ round($totalsRoundDust->total_cladding_area * 1.15, 2) ?? 0}}
                             </td>
                         </tr>
-                    </tfoot>
+                    </tfoot> --}}
                 </table>
             </div>
             <!--//table-responsive-->

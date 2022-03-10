@@ -18,7 +18,7 @@
                             <th class="">Bell Mouse</th>
                         </tr>
                     </thead>
-                    <tbody class=" dark:bg-gray-800">
+                    {{-- <tbody class=" dark:bg-gray-800">
                         <tr class="text-gray-700 dark:text-gray-400">
                             <td class="">Total galvanized sheet metal duct [KG]</td>
                             <td class="sum" id="sum"></td>
@@ -109,7 +109,7 @@
                             <td class=""></td>
                             <td class=""></td>
                         </tr>
-                    </tbody>
+                    </tbody> --}}
                 </table>
             </div><!--//table-responsive-->
         </div><!--//app-card-body-->		

@@ -90,8 +90,8 @@
                     </tr>
                     @empty
                     <tr>
-                        <td colspan="5">
-                            No Data Found...
+                        <td colspan="7" class="text-center">
+                            <p class="text-danger">No Data Found...</p>
                         </td>
                     </tr>
                     @endforelse

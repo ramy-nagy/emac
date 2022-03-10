@@ -8,13 +8,9 @@
                 <div class="app-card-header p-3 border-bottom-0">
                     <div class="row align-items-center text-center gx-3">
                         <div class="col-auto">
-                            <div class="app-icon-holder">
-                                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-person"
-                                    fill="currentColor" xmlns="http://www.w3.org/2000/svg"
-                                    style="width: 50px;height: 30px;">
-                                    <path fill-rule="evenodd"
-                                        d="M10 5a2 2 0 1 1-4 0 2 2 0 0 1 4 0zM8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm6 5c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z">
-                                    </path>
+                            <div class="app-icon-holder pl-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
+                                    <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
                                 </svg>
                             </div>
                             <!--//icon-holder-->
@@ -36,7 +32,7 @@
                                 <div class="item-data"><img class="profile-image" src="assets/images/user.png" alt="">
                                 </div>
                             </div>
-
+                            <input  type="file" class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input">
 
 
                         </div>
@@ -50,7 +46,7 @@
                                 @if ($isOpen)
                                 <input type="text"
                                     class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                    value="{{ $user->name ?? ''}}" wire:model="name">
+                                    wire:model="name">
                                 @error('name') <span class="text-danger">{{ $message }}</span>@enderror
                                 @else
                                 <div class="item-data">{{ $user->name ?? ''}}</div>
@@ -100,7 +96,7 @@
                 <!--//app-card-body-->
                 <div class="app-card-footer p-4 mt-auto">
                     @if (!$isOpen)
-                    <button wire:click="edit()" 
+                    <button wire:click="edit()"
                         class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-purple-600 rounded-lg dark:text-gray-400 focus:outline-none focus:shadow-outline-gray"
                         aria-label="Edit">
                         <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
@@ -110,12 +106,15 @@
                         </svg>
                     </button>
                     @else
-                    <button wire:click="update()" 
+                    <button wire:click="update()"
                         class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-purple-600 rounded-lg dark:text-gray-400 focus:outline-none focus:shadow-outline-gray"
                         aria-label="Edit">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-down" viewBox="0 0 16 16">
-                            <path fill-rule="evenodd" d="M3.5 10a.5.5 0 0 1-.5-.5v-8a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 0 0 1h2A1.5 1.5 0 0 0 14 9.5v-8A1.5 1.5 0 0 0 12.5 0h-9A1.5 1.5 0 0 0 2 1.5v8A1.5 1.5 0 0 0 3.5 11h2a.5.5 0 0 0 0-1h-2z"/>
-                            <path fill-rule="evenodd" d="M7.646 15.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 14.293V5.5a.5.5 0 0 0-1 0v8.793l-2.146-2.147a.5.5 0 0 0-.708.708l3 3z"/>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-box-arrow-down" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd"
+                                d="M3.5 10a.5.5 0 0 1-.5-.5v-8a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 0 0 1h2A1.5 1.5 0 0 0 14 9.5v-8A1.5 1.5 0 0 0 12.5 0h-9A1.5 1.5 0 0 0 2 1.5v8A1.5 1.5 0 0 0 3.5 11h2a.5.5 0 0 0 0-1h-2z" />
+                            <path fill-rule="evenodd"
+                                d="M7.646 15.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 14.293V5.5a.5.5 0 0 0-1 0v8.793l-2.146-2.147a.5.5 0 0 0-.708.708l3 3z" />
                         </svg>
                     </button>
                     @endif
@@ -126,8 +125,8 @@
             <!--//app-card-->
         </div>
 
-        {{-- <div class="col-12 col-lg-6">
-            <div class="app-card app-card-account shadow-sm d-flex flex-column align-items-start">
+        <div class="col-12 col-lg-6">
+            <div    class="app-card app-card-account shadow-sm d-flex flex-column align-items-start rounded-lg shadow-md dark:bg-gray-800">
                 <div class="app-card-header p-3 border-bottom-0">
                     <div class="row align-items-center gx-3">
                         <div class="col-auto">
@@ -228,6 +227,6 @@
             </div>
             <!--//app-card-->
         </div>
-        --}}
+       
     </div>
 </div>

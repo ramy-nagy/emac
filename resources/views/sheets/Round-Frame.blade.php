@@ -253,8 +253,6 @@
         $("input[type='number']").change(function(){
             var roundframe_diameter = parseInt($("#roundframe-diameter").val());
             var roundframe_length = parseInt($("#roundframe-length").val());
-            console.log(roundframe_diameter);
-            console.log(roundframe_length);
             if (roundframe_length > 1.5) {
                 var result = Math.round( ((.1 * 3.14) * (roundframe_diameter / 1000))) * Math.round(roundframe_length/1.5);            
             }else{
