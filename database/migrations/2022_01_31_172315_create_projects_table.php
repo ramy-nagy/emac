@@ -17,6 +17,7 @@ class CreateProjectsTable extends Migration
             $table->id();
             $table->foreignId('user_id');
             $table->string('name')->nulabel();
+            $table->string('description')->nulabel();
             $table->softDeletes();
             $table->timestamps();
 

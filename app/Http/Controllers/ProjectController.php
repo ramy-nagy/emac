@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request, Auth;
-use App\Models\RecDuct;
+use Illuminate\Http\Request;
 use App\Models\Project;
-class RecDuctController extends Controller
+
+class ProjectController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,11 +15,7 @@ class RecDuctController extends Controller
      */
     public function index()
     {
-        $projects = Auth::user()->projects()->latest()->get();
-        $project_id = $projects[0]->id;
-        $RecDucts = Project::whereId($project_id)->with('RecDucts')->first();
-        $totals = RecDuct::whereUserId(Auth::id())->where('project_id', $project_id)->Totals()->first();
-        return view('Rec-Duct', compact('projects', 'totals', 'project_id', 'RecDucts'));
+        return view('projects');
     }
 
     /**
@@ -49,9 +45,16 @@ class RecDuctController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        //
+    public function show($project)
+    {   
+        $project = Project::whereId($project)->with(['RecDucts'])->get();
+        if ($project->isEmpty())
+            abort(404);
+        if ($project->where('user_id',auth()->id())->isEmpty())
+            abort(401);
+            
+        //return $project;
+        return view('dashboard', compact('project'));
     }
 
     /**

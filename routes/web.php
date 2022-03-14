@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ProjectController;
 
 
 use App\Http\Controllers\RecDuctController;
@@ -36,11 +37,11 @@ Route::middleware('auth')->group(function () {
     Route::get('dashboard/{model}/export/{id}',    [DashboardController::class, 'export'])->name('export');
     
     // projects
-    Route::get('/projects', function () {
-        return view('projects');
-    });
+    Route::get('project/{model}',   [DashboardController::class, 'project_model'])->name('project.model');
+    Route::resource('projects', ProjectController::class)->names('projects');
 
     // sheets route
+    Route::get('Rec_Duct',      [DashboardController::class, 'Rec_Duct'])->name('Rec.Duct');
     Route::post('RecDuct',      [DashboardController::class, 'RecDuct'])->name('RecDuct');
     Route::post('RoundDust',    [DashboardController::class, 'RoundDust'])->name('RoundDust');
     Route::post('RecFrame',     [DashboardController::class, 'RecFrame'])->name('RecFrame');

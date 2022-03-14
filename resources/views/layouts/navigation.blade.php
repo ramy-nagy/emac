@@ -1,13 +1,15 @@
-<aside
-class="z-20 hidden w-64 overflow-y-auto dark:bg-gray-800 md:block flex-shrink-0"
->    <div class="py-4 text-gray-500">
-        <a class="ml-6 text-lg font-bold text-gray-800 dark:hover:text-gray-200 dark:text-gray-100" href="{{ route('dashboard.index') }}">
-            Windmill
+<aside class="z-20 hidden w-42 overflow-y-auto dark:bg-gray-800 md:block flex-shrink-0">
+    <div class="py-4 text-gray-500">
+        <a class=""
+            href="{{ route('dashboard.index') }}">
+            <img style="margin-left: 3.5rem" class=" ml-10 h-8 rounded-full" src="{{ asset('images/emac-log.jpeg') }}" style="with:17rem;" alt="logo"
+                aria-hidden="true">
         </a>
 
         <ul class="mt-6">
             <li class="relative px-6 py-3">
-                <x-nav-link class="dark:hover:text-gray-200 dark:text-gray-100" href="{{ route('dashboard.index') }}" :active="request()->routeIs('dashboard')">
+                <x-nav-link class="dark:hover:text-gray-200 dark:text-gray-100" href="{{ route('dashboard.index') }}"
+                    :active="request()->routeIs('dashboard.index')">
                     <x-slot name="icon">
                         <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round"
                             stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
@@ -21,21 +23,22 @@ class="z-20 hidden w-64 overflow-y-auto dark:bg-gray-800 md:block flex-shrink-0"
             </li>
 
             <li class="relative px-6 py-3">
-                <x-nav-link class="dark:hover:text-gray-200 dark:text-gray-100" href="{{ route('users.index') }}" :active="request()->routeIs('users.index')">
+                <x-nav-link class="dark:hover:text-gray-200 dark:text-gray-100" href="{{route('projects.index')}}"
+                    :active="request()->routeIs('projects.index')">
                     <x-slot name="icon">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z">
-                            </path>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-archive-fill" viewBox="0 0 16 16">
+                            <path
+                                d="M12.643 15C13.979 15 15 13.845 15 12.5V5H1v7.5C1 13.845 2.021 15 3.357 15h9.286zM5.5 7h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1 0-1zM.8 1a.8.8 0 0 0-.8.8V3a.8.8 0 0 0 .8.8h14.4A.8.8 0 0 0 16 3V1.8a.8.8 0 0 0-.8-.8H.8z" />
                         </svg>
                     </x-slot>
-                    {{ __('Users') }}
+                    {{ __('Projects') }}
                 </x-nav-link>
             </li>
 
             <li class="relative px-6 py-3">
-                <x-nav-link class="dark:hover:text-gray-200 dark:text-gray-100" href="{{ route('about') }}" :active="request()->routeIs('about')">
+                <x-nav-link class="dark:hover:text-gray-200 dark:text-gray-100" href="{{ route('about') }}"
+                    :active="request()->routeIs('about')">
                     <x-slot name="icon">
                         <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round"
                             stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">

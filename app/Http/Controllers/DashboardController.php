@@ -18,7 +18,7 @@ class DashboardController extends Controller
 {
 
     public function index()
-    {
+    { 
         if (Auth::user()->role == 'admin')
         return redirect('admin/dashboard');
 
@@ -33,7 +33,16 @@ class DashboardController extends Controller
         //$totalsRoundDust = RoundDust::whereUserId(Auth::id())->where('project_id', $project_id)->Totals()->first();
         return view('dashboard', compact('projects', 'project_id', 'RecDucts'));
     }
-
+    public function Rec_Duct()
+    { 
+        $projects = Auth::user()->projects()->latest()->get();
+        if ($projects->isEmpty())
+        return redirect('projects');
+        
+        $project_id = $projects[0]->id;
+        $project  = Project::whereId($project_id)->with('RecDucts')->first();
+        return view('sheets.Rec-Duct', compact('projects', 'project_id', 'project'));
+    }
     public function recduct(Request $request)
     {
        // return   $request->all();
@@ -53,6 +62,8 @@ class DashboardController extends Controller
             RecDuct::create([
                 'user_id'   =>$user->id,
                 'project_id'   =>$request->project_id,
+                "location"     => $request->location,
+                "section_no"     => $request->section_no,
                 "width"     => $request->width,
                 "depth"     => $request->depth,
                 "length"    => $request->length,
@@ -249,7 +260,14 @@ class DashboardController extends Controller
         $totals = RecDuct::whereUserId(Auth::id())->where('project_id', $project_id)->Totals()->first();
         return view('dashboard', compact('RecDucts','projects', 'totals', 'project_id'));
     }
-    
+
+    public function project_model(Request $request ,$model)
+    {
+        $project_id = $request->project_id;
+        $projects = Auth::user()->projects()->latest()->get();
+        $project = Project::whereId($request->project_id)->with('RecDucts')->first();
+        return view('sheets.'.$model, compact('project','projects', 'project_id'));
+    }
     
     public function export($model, $id)
     {

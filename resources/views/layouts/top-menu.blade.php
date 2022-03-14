@@ -67,9 +67,8 @@
             <!-- Profile menu -->
             <li class="relative">
                 <a href="{{url('/dashboard')}}">
-                <img class="  h-8 rounded-full"
-                src="{{ asset('images/emac-log.jpeg') }}" style="with:17rem;"
-                alt="logo" aria-hidden="true"></a>
+                    <img class="  h-8 rounded-full" src="{{ asset('images/emac-log.jpeg') }}" style="with:17rem;"
+                        alt="logo" aria-hidden="true"></a>
             </li>
             {{-- <a class="ml-6 text-lg font-bold text-gray-800 dark:text-gray-200" href="{{ url('/')}}">
                 {{config('app.name')}}
@@ -165,13 +164,12 @@
                     @click="toggleProfileMenu" @keydown.escape="closeProfileMenu" aria-label="Account"
                     aria-haspopup="true">
                     @php
-                        $profile = auth()->user()->getFirstMediaUrl('images', 'thumb') ;
+                    $profile = auth()->user()->getFirstMediaUrl('images', 'thumb') ;
                     @endphp
-                    <img class="object-cover w-8 h-8 rounded-full"
-                    @if($profile) src="{{$profile}}" @else src="{{ asset('images/avatar/avatar-illustrated-01.webp')}}" @endif
-                        alt="" aria-hidden="true">
+                    <img class="object-cover w-8 h-8 rounded-full" @if($profile) src="{{$profile}}" @else
+                        src="{{ asset('images/avatar/avatar-illustrated-01.webp')}}" @endif alt="" aria-hidden="true">
                 </button>
-                
+
                 <template x-if="isProfileMenuOpen">
                     <ul x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100"
                         x-transition:leave-end="opacity-0" @click.away="closeProfileMenu"
@@ -208,18 +206,19 @@
                         <li class="flex">
                             <form method="POST" action="{{ route('logout') }}">
                                 @csrf
-                            <a class="inline-flex items-center w-full px-2 py-1 text-sm font-semibold transition-colors duration-150 rounded-md hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-800 dark:hover:text-gray-200"
-                                href="#" onclick="event.preventDefault();
+                                <a class="inline-flex items-center w-full px-2 py-1 text-sm font-semibold transition-colors duration-150 rounded-md hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-800 dark:hover:text-gray-200"
+                                    href="#" onclick="event.preventDefault();
                                     this.closest('form').submit();">
-                                <svg class="w-4 h-4 mr-3" aria-hidden="true" fill="none" stroke-linecap="round"
-                                    stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path
-                                        d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1">
-                                    </path>
-                                </svg>
-                                <span>{{ __('Log Out') }}</span>
-                            </a>
-                            
+                                    <svg class="w-4 h-4 mr-3" aria-hidden="true" fill="none" stroke-linecap="round"
+                                        stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24"
+                                        stroke="currentColor">
+                                        <path
+                                            d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1">
+                                        </path>
+                                    </svg>
+                                    <span>{{ __('Log Out') }}</span>
+                                </a>
+
                             </form>
                         </li>
                     </ul>

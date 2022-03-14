@@ -1,4 +1,4 @@
-<div class="row px-4 py-3 mb-8 rounded-lg shadow-md dark:bg-gray-800">
+<div class="row px-4 m-1 py-3 mb-8 rounded-lg shadow-md dark:bg-gray-800">
     <label class="block text-sm col-md-5 my-2">
         <span class="text-gray-700 dark:text-gray-400">Name</span>
         <input wire:model="name"

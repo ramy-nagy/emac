@@ -5,7 +5,7 @@
         @else
         @include('livewire.projects.create')
         @endif
-        <h6 class="my-1 text-2xl font-semibold text-gray-700 dark:text-gray-200">
+        <h6 class="my-4 text-2xl font-semibold text-gray-700 dark:text-gray-200">
             Projects ({{ $projects->total() ?? 0 }})
         </h6>
         <div class="table-responsive">
@@ -37,7 +37,9 @@
                                 value="{{ $project->description ?? ''}}" wire:model="description">
                         </td>
                         @else --}}
-                        <td class="px-4 py-3 text-sm">{{ $project->name ?? ''}}</td>
+                        <td class="px-4 py-3 text-sm">
+                            <a href="{{route('projects.show', $project->id ) }}"  rel="noopener noreferrer">{{ $project->name ?? ''}}</a>
+                            </td>
                         <td class="px-4 py-3 text-sm">{{ $project->description ?? ''}}</td>
                         <td class="px-4 py-3 text-sm">{{ $project->created_at ?? ''}}</td>
                         <td class="px-4 py-3 text-sm">{{ $project->updated_at ?? ''}}</td>
@@ -99,7 +101,7 @@
             </table>
         </div>
     </div>
-    <div>
+    <div class="my-4">
         {{ $projects->links() }}
     </div>
 </div>
