@@ -43,10 +43,35 @@ class User extends Authenticatable  implements HasMedia
         'email_verified_at' => 'datetime',
     ];
 
-    public function RecDucts()
+    public function RecDuct()
     {
         return $this->hasMany(RecDuct::class);
     }
+    public function RoundDust()
+    {
+        return $this->hasMany(RoundDust::class);
+    }
+    public function RecFrame()
+    {
+        return $this->hasMany(RecFrame::class);
+    }
+    public function RoundFrame()
+    {
+        return $this->hasMany(RoundFrame::class);
+    }
+    public function EndCapRec()
+    {
+        return $this->hasMany(EndCapRec::class);
+    }
+    public function EndCapRound()
+    {
+        return $this->hasMany(EndCapRound::class);
+    }
+    public function BellMouse()
+    {
+        return $this->hasMany(BellMouse::class);
+    }
+
 
     public function projects()
     {

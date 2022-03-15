@@ -1,16 +1,33 @@
 <x-app-layout>
+    <span class="text-gray-700 dark:text-gray-400">Projects</span>
+    <form action="{{route("project.model", 'Bell-Mouse') }}" method="get" enctype="multipart/form-data">
+        @csrf
+        <div class="mb-2 form-group">
+            <label for="country"></label>
+            <select name="project_id" id="project" onchange="this.form.submit()"
+                class="block w-full text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-select focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray">
+                <option value="">Please Select A Project</option>
+                @foreach($projects as $projecta)
+                <option value="{{ $projecta->id }}">
+                    Name :: {{ $projecta->name }} - Description :: {{$projecta->description}}
+                </option>
+                @endforeach
+            </select>
+        </div>
+    </form>
+
     <div class="col-md-12">
         <div class="px-4  py-3 mb-3 text-gray-600 dark:text-gray-300 rounded-lg shadow-md dark:bg-gray-800">
             Project NO :: {{$project_id ?? ''}} <br>
             Bending Distance :: .1 MM .
-            <form action="{{route('RoundFrame')}}" method="post">
+            <form action="{{route('BellMouse')}}" method="post">
                 @csrf
                 <input type="hidden" value="{{$project_id ?? '' }}" name="project_id">
                 <div class="row mt-3">
-                    <div class=" col-md-5 border border-dark p-2 my-2 mr-1 large-div-text"
-                        style="width: 15% !important ">
+                    <div class=" col-md-3 border border-dark p-2 my-2 mr-1 large-div-text"
+                        style="width: 22% !important ">
                         <div class="why dark:bg-gray-800">Machine data</div>
-                        <label class=" text-sm col-md-11">
+                        <label class=" text-sm col-md-5">
                             <span class="text-gray-700 dark:text-gray-400">Tag No</span>
                             <select name="tag_no"
                                 class="block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-select focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray">
@@ -25,22 +42,45 @@
                                 <option value="FCU-09">FCU-09</option>
                             </select>
                         </label>
+                        <label class=" text-sm col-md-6">
+                            <span class="text-gray-700 dark:text-gray-400">Description</span>
+                            <select name="description"
+                                class="block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-select focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray">
+                                <option value="Fan coil unit">Fan coil unit</option>
+                                <option value="Fresh air handling unit">Fresh air handling unit</option>
+                            </select>
+                        </label>
                     </div>
-                    <div class=" col-md-4 border border-dark p-2 my-2 mr-1">
-                        <div class="why dark:bg-gray-800">Fram data</div>
-                        <label class=" text-sm col-md-4">
-                            <span class="text-gray-700 dark:text-gray-400">Diameter(m)</span>
-                            <input type="number" min="0" id="roundframe-diameter" value="0" name="diameter"
+                    <div class=" col-md-8 border border-dark p-2 my-2 mr-1" style="width: 77% !important ">
+                        <div class="why dark:bg-gray-800" style="width: 240px">Machine bell mouse data</div>
+                        <label class=" text-sm col-md-1">
+                            <span class="text-gray-700 dark:text-gray-400">Face Width (mm)</span>
+                            <input type="number" min="0" id="bell_mouse_face_width" value="0" name="face_width"
                                 class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input">
                         </label>
-                        <label class=" text-sm col-md-4">
-                            <span class="text-gray-700 dark:text-gray-400">Length(m)</span>
-                            <input type="number" min="0" id="roundframe-length" name="length" value="0"
+                        <label class=" text-sm col-md-2">
+                            <span class="text-gray-700 dark:text-gray-400">Face Depth (mm)</span>
+                            <input type="number" min="0" id="bell_mouse_face_depth" name="face_depth" value="0"
                                 class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input">
                         </label>
-                        <label class=" text-sm col-md-3">
+                        <label class=" text-sm col-md-2">
+                            <span class="text-gray-700 dark:text-gray-400">Main Duct Width (mm)</span>
+                            <input type="number" min="0" id="bell_mouse_duct_width" name="duct_width" value="0"
+                                class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input">
+                        </label>
+                        <label class=" text-sm col-md-2">
+                            <span class="text-gray-700 dark:text-gray-400">Main Duct Depth (mm)</span>
+                            <input type="number" min="0" id="bell_mouse_duct_depth" name="duct_depth" value="0"
+                                class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input">
+                        </label>
+                        <label class=" text-sm col-md-2">
+                            <span class="text-gray-700 dark:text-gray-400">Plenum Length (mm)</span>
+                            <input type="number" min="0" id="bell_mouse_plenum_length" name="plenum_length" value="0"
+                                class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input">
+                        </label>
+                        <label class="mr-3 text-sm col-md-2">
                             <span class="text-gray-700 dark:text-gray-400">Area (m^2)</span>
-                            <input type="number" min="0" value="0" id="roundframe-area" readonly name="area"
+                            <input type="number" min="0" value="0" id="bell-mouse-area" readonly name="area"
                                 class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input">
                         </label>
                     </div>
@@ -48,25 +88,31 @@
                         <div class="why dark:bg-gray-800" style="width: 250px">Thermal insulation data</div>
                         <label class=" text-sm col-md-5">
                             <span class="text-gray-700 dark:text-gray-400">Thickness</span>
-                            <input type="number" value="25" id="roundframe-Thickness" readonly name="thermal_thickness"
-                                class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input">
+                            <select id="bell-mouse-Thickness" name="thermal_thickness"
+                                class="block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-select focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray">
+                                <option value="0"></option>
+                                <option value="25">25</option>
+                                <option value="50">50</option>
+                            </select>
                         </label>
                         <label class=" text-sm col-md-3">
                             <span class="text-gray-700 dark:text-gray-400">Area 1 inch</span>
-                            <input type="number" min="0" value="0" id="roundframe-Area_1_inch" readonly name="Area_1_inch"
+                            <input type="number" min="0" value="0" id="bell-mouse-Area_1_inch" readonly
+                                name="Area_1_inch"
                                 class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input">
                         </label>
                         <label class=" text-sm col-md-3">
                             <span class="text-gray-700 dark:text-gray-400">Area 2 inch</span>
-                            <input type="number" min="0" value="0" id="roundframe-Area_2_inch" readonly name="Area_2_inch"
+                            <input type="number" min="0" value="0" id="bell-mouse-Area_2_inch" readonly
+                                name="Area_2_inch"
                                 class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input">
                         </label>
                     </div>
-                    <div class=" col-md-3 border border-dark p-2 my-2">
+                    <div class=" col-md-2 border border-dark p-2 my-2">
                         <div class="why dark:bg-gray-800">Cladding</div>
-                        <label class=" text-sm col-md-6">
+                        <label class=" text-sm col-md-5">
                             <span class="text-gray-700 dark:text-gray-400">Cladding</span>
-                            <select id="roundframe-Cladding" name="cladding_option"
+                            <select id="bell-mouse-Cladding" name="cladding_option"
                                 class="block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-select focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray">
                                 <option value="0">no</option>
                                 <option value="1">yes</option>
@@ -74,17 +120,18 @@
                         </label>
                         <label class=" text-sm col-md-5">
                             <span class="text-gray-700 dark:text-gray-400">Area (m^2)</span>
-                            <input type="number" min="0" value="0" id="roundframe-Cladding_Area" readonly name="Cladding_Area"
+                            <input type="number" min="0" value="0" id="bell-mouse-Cladding_Area" readonly
+                                name="Cladding_Area"
                                 class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input">
                         </label>
                     </div>
-                    <div class=" col-md-3 border border-dark p-2 my-2 mr-1">
+                    <div class=" col-md-4 border border-dark p-2 my-2 mr-1">
                         <div class="why dark:bg-gray-800">Summary</div>
-                        <label class=" text-sm col-md-4">
+                        <label class=" text-sm col-md-5">
                             <span class="text-gray-700 dark:text-gray-400">Duct Gage</span>
-                            <select id="roundframe-duct_gage" name="duct_gage"
+                            <select id="bell-mouse-duct_gage" name="duct_gage"
                                 class="duct_gage block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-select focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray">
-                                <option value="24">24</option>
+                                <option value="20">20</option>
                                 <option value="10">10</option>
                                 <option value="11">11</option>
                                 <option value="12">12</option>
@@ -92,8 +139,8 @@
                                 <option value="14">14</option>
                                 <option value="16">16</option>
                                 <option value="18">18</option>
-                                <option value="20">20</option>
                                 <option value="22">22</option>
+                                <option value="24">24</option>
                                 <option value="26">26</option>
                                 <option value="28">28</option>
                                 <option value="30">30</option>
@@ -101,16 +148,16 @@
                         </label>
                         <label class=" text-sm col-md-3">
                             <span class="text-gray-700 dark:text-gray-400">Thickness</span>
-                            <input type="number" readonly id="roundframe-thickness" name="thickness" value="0.701"
+                            <input type="number" readonly id="bell-mouse-thickness" name="thickness" value="1.006"
                                 class="thickness block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input">
                         </label>
-                        <label class=" text-sm col-md-3 ">
+                        <label class=" text-sm col-md-3">
                             <span class="text-gray-700 dark:text-gray-400">weight (Kg)</span>
-                            <input type="number" readonly id="roundframe-duct_weight" name="duct_weight" value="0"
+                            <input type="number" readonly id="bell-mouse-duct_weight" name="duct_weight" value="0"
                                 class="duct_weight block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input">
                         </label>
                     </div>
-                    <div class="mt-8 col-md-4 row">
+                    <div class="mt-8 col-md-2 row">
                         <div class="col-md-2">
                             <button type="submit" class="btn btn-success mt-4">Save</button>
                         </div>
@@ -128,8 +175,12 @@
                         <tr
                             class=" text-xs font-semibold tracking-wide text-left text-gray-500  border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
                             <th class="py-3">Tag no</th>
-                            <th class="py-3">Diameter</th>
-                            <th class="py-3">Length</th>
+                            <th class="py-3">Face Width</th>
+                            <th class="py-3">Face Depth</th>
+                            <th class="py-3">Duct Width</th>
+                            <th class="py-3">Duct Depth</th>
+                            <th class="py-3">Plenum Length</th>
+
                             <th class="py-3">Area</th>
                             <th class="py-3">Thickness</th>
                             <th class="py-3">Area1</th>
@@ -144,12 +195,15 @@
                         </tr>
                     </thead>
                     <tbody class=" divide-y dark:divide-gray-700 dark:bg-gray-800">
-                        @forelse ($project->RoundFrames as $RecDuct)
+                        @forelse ($project->BellMouses as $RecDuct)
                         <tr class="text-gra y-700 dark:text-gray-400">
                             <td class="py-3 border border-secondary border-end">{{$RecDuct->tag_no ?? ''}}</td>
-                            <td class="py-3 border border-secondary border-end">{{$RecDuct->diameter ?? ''}}</td>
-                            <td class="py-3 border border-secondary border-end RecDuct_length">{{$RecDuct->length ??
-                                ''}}</td>
+                            <td class="py-3 border border-secondary border-end">{{$RecDuct->face_width ?? ''}}</td>
+                            <td class="py-3 border border-secondary border-end">{{$RecDuct->face_depth ?? ''}}</td>
+                            <td class="py-3 border border-secondary border-end">{{$RecDuct->main_duct_width ?? ''}}</td>
+                            <td class="py-3 border border-secondary border-end">{{$RecDuct->main_duct_depth ?? ''}}</td>
+                            <td class="py-3 border border-secondary border-end">{{$RecDuct->plenum_length ?? ''}}</td>
+
                             <td class="py-3 border border-secondary border-end RecDuct_area">{{$RecDuct->area ?? ''}}
                             </td>
                             <td class="py-3 border border-secondary border-end">{{$RecDuct->thermal_thickness ?? ''}}
@@ -178,7 +232,7 @@
                                 </a>
                             </td> --}}
                             <td>
-                                <a href="{{ route('delete',['model'=>'RoundFrame', 'id'=> $RecDuct->id]) }}"
+                                <a href="{{ route('delete',['model'=>'BellMouse', 'id'=> $RecDuct->id]) }}"
                                     class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-purple-600 rounded-lg dark:text-gray-400 focus:outline-none focus:shadow-outline-gray"
                                     aria-label="delete">
                                     <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
@@ -217,12 +271,7 @@
                                 Total galvanized sheet metal Area [m2] --<span class="text-lg" id="RecDuct_area"></span>
                             </td>
                         </tr>
-                        <tr class="text-gray-700 dark:text-gray-400">
-                            <td class="px-4 py-3 text-sm">
-                                Total galvanized sheet metal Length ( LM ) -- <span class="text-lg"
-                                    id="RecDuct_length"></span>
-                            </td>
-                        </tr>
+
                         <tr class="text-gray-700 dark:text-gray-400">
                             <td class="px-4 py-3 text-sm">
                                 Total insulation Area [m2] 1 inch thickness -- <span class="text-lg"
@@ -235,12 +284,7 @@
                                     id="RecDuct_area_2_inch"></span>
                             </td>
                         </tr>
-                        <tr class="text-gray-700 dark:text-gray-400">
-                            <td class="px-4 py-3 text-sm">
-                                Total Acoustic insulation Area [m2] --<span class="text-lg"
-                                    id="RecDuct_accoustic_area"></span>
-                            </td>
-                        </tr>
+
                         <tr class="text-gray-700 dark:text-gray-400">
                             <td class="px-4 py-3 text-sm">
                                 Total Cladding Area [m2] --<span class="text-lg" id="RecDuct_cladding_area"></span>
@@ -254,79 +298,69 @@
     </div>
     @push('scripts')
     <script>
-        // every input in form
+        //-- 
+        // every input in form 
         $("input[type='number']").change(function(){
-            var roundframe_diameter = parseInt($("#roundframe-diameter").val());
-            var roundframe_length = parseInt($("#roundframe-length").val());
-            if (roundframe_length > 1.5) {
-                var result = Math.round( ((.1 * 3.14) * (roundframe_diameter / 1000))) * Math.round(roundframe_length/1.5);            
-            }else{
-                var result = Math.round(((.1 * 3.14) * (roundframe_diameter / 1000)));
-            }
+            var bell_mouse_face_width = parseFloat($("#bell_mouse_face_width").val());
+            var bell_mouse_face_depth = parseFloat($("#bell_mouse_face_depth").val());
+            var bell_mouse_duct_width = parseFloat($("#bell_mouse_duct_width").val());
+            var bell_mouse_duct_depth = parseFloat($("#bell_mouse_duct_depth").val());
+            var bell_mouse_plenum_length = parseFloat($("#bell_mouse_plenum_length").val());
 
+            var result1 = ((bell_mouse_duct_width + bell_mouse_face_width )/ 2 * bell_mouse_plenum_length); 
+            var result2 = ((bell_mouse_duct_depth + bell_mouse_face_depth )/ 2 * bell_mouse_plenum_length); 
+            var result = (result1 + result2)/1000000 * 2;
             // area change
-            $( "#roundframe-area" ).val(result.toFixed(2));
-            // duct_weight change
-            $( "#roundframe-duct_weight" ).val($("#roundframe-area").val() * duct_weight[$("#roundframe-duct_gage").val()]);
+            $( "#bell-mouse-area" ).val(result.toFixed(2));
+            // duct_weight change 
+            $( "#bell-mouse-duct_weight" ).val($("#bell-mouse-area").val() * duct_weight[$("#bell-mouse-duct_gage").val()]);
             //-------------------
-            var resultAccoustic = 0 ;
-            if ( $('select#Accoustic').val() == 1 ) {
-            resultAccoustic = ((parseInt($("#Width").val()) + parseInt($("#Depth").val())) *2* (parseInt($("#Accoustic_Length").val())/1000)) ;
-                $( "#Accoustic_Area" ).val(resultAccoustic.toFixed(2));
-            }else{
-                $( "#Accoustic_Area" ).val(resultAccoustic);
-            }
         });
-        $("#roundframe-duct_gage").on('change', function() {
+        $("#bell-mouse-duct_gage").on('change', function() {
             // thickness duct_weight change in  duct_gage change
-            $('#roundframe-thickness').val(thickness[this.value]);
-            $( "#roundframe-duct_weight" ).val($("#roundframe-area").val() * duct_weight[$(".roundframe-duct_gage").val()]);
+            $('#bell-mouse-thickness').val(thickness[this.value]);
+            $( "#bell-mouse-duct_weight" ).val($("#bell-mouse-area").val() * duct_weight[$("#bell-mouse-duct_gage").val()]);
         });
-        // --------------------------------
-        $('select#roundframe-Thickness').on('change', function() {
-            var roundframe_diameter = parseInt($("#roundframe-diameter").val());
-            var roundframe_length = parseInt($("#roundframe-length").val());
-            var result1 = ( ( 3.14 *( Math.pow(((roundframe_diameter + this.value * 2 ) / 1000),2 ) /4)) * roundframe_length );
-            //var result2 = ( ( 3.14 *( Math.pow(((roundframe_diameter + this.value * 2 ) / 1000),2 ) /4)) * roundframe_length );
+        // -------------------------------
+        // -------------------------------- 
+        $('select#bell-mouse-Thickness').on('change', function() {
+            var bell_mouse_face_width = parseFloat($("#bell_mouse_face_width").val());
+            var bell_mouse_face_depth = parseFloat($("#bell_mouse_face_depth").val());
+            var bell_mouse_duct_width = parseFloat($("#bell_mouse_duct_width").val());
+            var bell_mouse_duct_depth = parseFloat($("#bell_mouse_duct_depth").val());
+            var bell_mouse_plenum_length = parseFloat($("#bell_mouse_plenum_length").val());
+            var result1 = 2*(( 
+                (bell_mouse_face_width+bell_mouse_duct_width+this.value*4)/2*bell_mouse_plenum_length
+                +
+                (bell_mouse_duct_depth+bell_mouse_face_depth+this.value*4)/2*bell_mouse_plenum_length)
+                / 1000000 );
             if ( this.value == 25 ) {
-                $( "#roundframe-Area_1_inch" ).val(result1.toFixed(2));
-                $( "#roundframe-Area_2_inch" ).val(0);
+                $( "#bell-mouse-Area_1_inch" ).val(result1.toFixed(2));
+                $( "#bell-mouse-Area_2_inch" ).val(0);
             }else if(this.value == 50){
-                $( "#roundframe-Area_2_inch" ).val(result1);
-                $( "#roundframe-Area_1_inch" ).val(0);
+                $( "#bell-mouse-Area_2_inch" ).val(result1.toFixed(2));
+                $( "#bell-mouse-Area_1_inch" ).val(0);
             }else{
-                $( "#roundframe-Area_1_inch" ).val(0);
-                $( "#roundframe-Area_2_inch" ).val(0);
+                $( "#bell-mouse-Area_1_inch" ).val(0);
+                $( "#bell-mouse-Area_2_inch" ).val(0);
             }
         });
         // -----------------------------------
-        $('select#roundframe-Cladding').on('change', function() {
+        $('select#bell-mouse-Cladding').on('change', function() {
             var resultCladding = 0 ;
             if ( this.value == 1 ) {
-                if ($("select#roundframe-Thickness").val() == '') {
-                    resultCladding =  $("#roundframe-area").val() * 1.006 ;
-                    $( "#roundframe-Cladding_Area" ).val(resultCladding);
+                if ($("select#bell-mouse-Thickness").val() == '') {
+                    resultCladding =  $("#bell-mouse-area").val() * 1.006 ;
+                    $( "#bell-mouse-Cladding_Area" ).val(resultCladding);
                 } else {
-                    resultCladding = ($("#roundframe-Area_1_inch" ).val() * 1.006) + ($("#roundframe-Area_2_inch" ).val() * 1.006) ;
-                    $( "#roundframe-Cladding_Area" ).val(resultCladding.toFixed(4));
+                    resultCladding = ($("#bell-mouse-Area_1_inch" ).val() * 1.006) + ($("#bell-mouse-Area_2_inch" ).val() * 1.006) ;
+                    $( "#bell-mouse-Cladding_Area" ).val(resultCladding.toFixed(4));
                 }
             }else{
-                $( "#roundframe-Cladding_Area" ).val(resultCladding);
+                $( "#bell-mouse-Cladding_Area" ).val(resultCladding);
             }
         });
-        // --------------------------------------=IF(M9="Yes";ROUNDUP((3.14*E9+$S$4*2)*N9/1000;2);0)
-        $('select#roundframe-Accoustic').on('change', function() {
-            var resultAccoustic = 0 ;
-            var roundframe_diameter = parseInt($("#roundframe-diameter").val());
-            var roundframe_Accoustic_Length = parseInt($("#roundframe-Accoustic_Length").val());
 
-            if ( this.value == 1 ) {
-            resultAccoustic = ((3.14 * roundframe_diameter + 15 * 2) * roundframe_Accoustic_Length / 1000 );
-            $( "#roundframe-Accoustic_Area" ).val(resultAccoustic.toFixed(2));
-            }else{
-                $( "#roundframe-Accoustic_Area" ).val(resultAccoustic);
-            }
-        });
     </script>
     @endpush
 </x-app-layout>

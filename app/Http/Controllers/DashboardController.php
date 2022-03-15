@@ -12,6 +12,7 @@ use App\Models\RecFrame;
 use App\Models\RoundFrame;
 use App\Models\EndCapRec;
 use App\Models\EndCapRound;
+use App\Models\BellMouse;
 use App\Models\Project;
 
 class DashboardController extends Controller
@@ -33,7 +34,8 @@ class DashboardController extends Controller
         //$totalsRoundDust = RoundDust::whereUserId(Auth::id())->where('project_id', $project_id)->Totals()->first();
         return view('dashboard', compact('projects', 'project_id', 'RecDucts'));
     }
-    public function Rec_Duct()
+    //get
+    public function Rec_Duct() 
     { 
         $projects = Auth::user()->projects()->latest()->get();
         if ($projects->isEmpty())
@@ -43,20 +45,89 @@ class DashboardController extends Controller
         $project  = Project::whereId($project_id)->with('RecDucts')->first();
         return view('sheets.Rec-Duct', compact('projects', 'project_id', 'project'));
     }
-    public function recduct(Request $request)
+    public function Round_Duct()
+    { 
+        $projects = Auth::user()->projects()->latest()->get();
+        if ($projects->isEmpty())
+        return redirect('projects');
+        
+        $project_id = $projects[0]->id;
+        $project  = Project::whereId($project_id)->with('RoundDucts')->first();
+        return view('sheets.Round-Duct', compact('projects', 'project_id', 'project'));
+    }
+    public function GetFitting()
+    { 
+        $projects = Auth::user()->projects()->latest()->get();
+        if ($projects->isEmpty())
+        return redirect('projects');
+        
+        $project_id = $projects[0]->id;
+        $project  = Project::whereId($project_id)->with('RoundDucts')->first();
+        return view('sheets.Fitting', compact('projects', 'project_id', 'project'));
+    }
+    public function Rec_Frame()
+    { 
+        $projects = Auth::user()->projects()->latest()->get();
+        if ($projects->isEmpty())
+        return redirect('projects');
+        
+        $project_id = $projects[0]->id;
+        $project  = Project::whereId($project_id)->with('RecFrames')->first();
+        return view('sheets.Rec-Frame', compact('projects', 'project_id', 'project'));
+    }
+    public function Round_Frame()
+    { 
+        $projects = Auth::user()->projects()->latest()->get();
+        if ($projects->isEmpty())
+        return redirect('projects');
+        
+        $project_id = $projects[0]->id;
+        $project  = Project::whereId($project_id)->with('RoundFrames')->first();
+        return view('sheets.Round-Frame', compact('projects', 'project_id', 'project'));
+    }
+    public function End_Cap_Rec()
+    { 
+        $projects = Auth::user()->projects()->latest()->get();
+        if ($projects->isEmpty())
+        return redirect('projects');
+        
+        $project_id = $projects[0]->id;
+        $project  = Project::whereId($project_id)->with('EndCapRecs')->first();
+        return view('sheets.End-Cap-Rec', compact('projects', 'project_id', 'project'));
+    }
+    public function End_Cap_Round()
+    { 
+        $projects = Auth::user()->projects()->latest()->get();
+        if ($projects->isEmpty())
+        return redirect('projects');
+        
+        $project_id = $projects[0]->id;
+        $project  = Project::whereId($project_id)->with('EndCapRounds')->first();
+        return view('sheets.End-Cap-Round', compact('projects', 'project_id', 'project'));
+    }
+    public function Air_outlet_Plenum()
+    { 
+        $projects = Auth::user()->projects()->latest()->get();
+        if ($projects->isEmpty())
+        return redirect('projects');
+        
+        $project_id = $projects[0]->id;
+        $project  = Project::whereId($project_id)->with('EndCapRounds')->first();
+        return view('sheets.End-Cap-Round', compact('projects', 'project_id', 'project'));
+    }
+    public function Bell_Mouse()
+    { 
+        $projects = Auth::user()->projects()->latest()->get();
+        if ($projects->isEmpty())
+        return redirect('projects');
+        
+        $project_id = $projects[0]->id;
+        $project  = Project::whereId($project_id)->with('BellMouses')->first();
+        return view('sheets.Bell-Mouse', compact('projects', 'project_id', 'project'));
+    }
+    //post  
+    public function RecDuct(Request $request)
     {
-       // return   $request->all();
-        /*    $validator = Validator::make($request->all(), [
-            'count' => 'required',
-            'sales'  => 'required',
-            'points'  => 'required',
-            'product'  => 'required',
-            'category' => 'required',
-        ]);
-
-        if ($validator->fails()) {
-            return redirect()->route('dashboard.index')->with(['type'=>'error','message'=>"Something goes wrong !!"]);
-        } */
         try{
             $user = Auth::user();
             RecDuct::create([
@@ -88,23 +159,14 @@ class DashboardController extends Controller
     }
     public function RoundDust(Request $request)
     {
-       //return   $request->all();
-        /*    $validator = Validator::make($request->all(), [
-            'count' => 'required',
-            'sales'  => 'required',
-            'points'  => 'required',
-            'product'  => 'required',
-            'category' => 'required',
-        ]);
 
-        if ($validator->fails()) {
-            return redirect()->route('dashboard.index')->with(['type'=>'error','message'=>"Something goes wrong !!"]);
-        } */
         try{
             $user = Auth::user();
             RoundDust::create([
                 'user_id'   =>$user->id,
                 'project_id'   =>$request->project_id,
+                "location"     => $request->location,
+                "section_no"     => $request->section_no,
                 "diameter"     => $request->diameter,
                 "length"    => $request->length,
                 "area"      => $request->area,
@@ -128,23 +190,13 @@ class DashboardController extends Controller
     }
     public function RecFrame(Request $request)
     {
-       // return   $request->all();
-        /*    $validator = Validator::make($request->all(), [
-            'count' => 'required',
-            'sales'  => 'required',
-            'points'  => 'required',
-            'product'  => 'required',
-            'category' => 'required',
-        ]);
-
-        if ($validator->fails()) {
-            return redirect()->route('dashboard.index')->with(['type'=>'error','message'=>"Something goes wrong !!"]);
-        } */
         try{
             $user = Auth::user();
             RecFrame::create([
                 'user_id'   =>$user->id,
                 'project_id'   =>$request->project_id,
+                "description"     => $request->description,
+                "tag_no"     => $request->tag_no,
                 "width"     => $request->width,
                 "depth"     => $request->depth,
                 "length"    => $request->length,
@@ -166,18 +218,6 @@ class DashboardController extends Controller
     }
     public function RoundFrame(Request $request)
     {
-        //return   $request->all();
-        /*    $validator = Validator::make($request->all(), [
-            'count' => 'required',
-            'sales'  => 'required',
-            'points'  => 'required',
-            'product'  => 'required',
-            'category' => 'required',
-        ]);
-
-        if ($validator->fails()) {
-            return redirect()->route('dashboard.index')->with(['type'=>'error','message'=>"Something goes wrong !!"]);
-        } */
         try{
             $user = Auth::user();
             RoundFrame::create([
@@ -185,6 +225,9 @@ class DashboardController extends Controller
                 'project_id'   =>$request->project_id,
                 "diameter"     => $request->diameter,
                 "length"    => $request->length,
+                "tag_no"    => $request->tag_no,
+                "description"    => 'Fan coil unit',
+                "location"    => 'As per DWG',
                 "area"      => $request->area,
                 "thermal_thickness"=> $request->thermal_thickness,
                 "area_1_inch"   => $request->Area_1_inch,
@@ -209,6 +252,9 @@ class DashboardController extends Controller
             EndCapRec::create([
                 'user_id'   =>$user->id,
                 'project_id'   =>$request->project_id,
+                "tag_no"    => $request->tag_no,
+                "description"    =>$request->description,
+                "location"    => 'As per DWG',
                 "width"     => $request->width,
                 "depth"    => $request->depth,
                 "area"      => $request->area,
@@ -236,6 +282,9 @@ class DashboardController extends Controller
                 'user_id'   =>$user->id,
                 'project_id'   =>$request->project_id,
                 "diameter"     => $request->diameter,
+                "tag_no"    => $request->tag_no,
+                "description"    =>$request->description,
+                "location"    => 'As per DWG',
                 "area"      => $request->area,
                 "thermal_thickness"=> $request->thermal_thickness,
                 "area_1_inch"   => $request->Area_1_inch,
@@ -252,6 +301,42 @@ class DashboardController extends Controller
             return redirect()->back()->with(['type'=>'error','message'=>"Something goes wrong while creating!!"]);
         }
     }
+    public function BellMouse(Request $request)
+    {
+        //return $request->all();
+        try{
+            $user = Auth::user();
+            BellMouse::create([
+                'user_id'   =>$user->id,
+                'project_id'   =>$request->project_id,
+                "tag_no"    => $request->tag_no,
+                "description"    =>$request->description,
+                "location"    => 'As per DWG',
+
+                "face_width"     => $request->face_width,
+                "face_depth"     => $request->face_depth,
+                "main_duct_width"     => $request->duct_width,
+                "main_duct_depth"     => $request->duct_depth,
+                "plenum_length"     => $request->plenum_length,
+
+                "area"      => $request->area,
+                "thermal_thickness"=> $request->thermal_thickness,
+                "area_1_inch"   => $request->Area_1_inch,
+                "area_2_inch"   => $request->Area_2_inch,
+                "cladding_option"   => $request->cladding_option,
+                "cladding_area"     => $request->Cladding_Area,
+                "duct_gage"    => $request->duct_gage,
+                "thickness" => $request->thickness,
+                "duct_weight"=> $request->duct_weight,
+            ]);             
+            return redirect()->back()->with(['type'=>'success','message'=>"Successfully Create!!"]);
+                            
+        }catch(\Exception $e){
+            return redirect()->back()->with(['type'=>'error','message'=>"Something goes wrong while creating!!"]);
+        }
+    }
+
+
     public function project(Request $request)
     {
         $project_id = $request->project_id;
@@ -306,7 +391,7 @@ class DashboardController extends Controller
     public function delete($model, $id)
     {
         try{
-            RecDuct::find($id)->delete();
+            Auth::user()->$model()->whereId($id)->delete();
             return redirect()->back()->with(['type'=>'success','message'=> 'Deleted Successfully!!']);
         }catch(\Exception $e){
             return redirect()->back()->with(['type'=>'error','message'=> 'Something goes wrong while deleting!!']);

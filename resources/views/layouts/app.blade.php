@@ -83,15 +83,15 @@
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="#">Summary</a></li>
-                            <li class="breadcrumb-item "{{\Request::route()->getName() == 'Rec.Duct' ? 'aria-current="page"': '' }} ><a href="{{route('Rec.Duct')}}">Rec.Duct</a></li>
-                            <li class="breadcrumb-item"><a href="#">Round.Duct</a></li>
+                            <li class="breadcrumb-item "><a href="{{route('Rec.Duct')}}">Rec.Duct</a></li>
+                            <li class="breadcrumb-item"><a href="{{route('Round.Duct')}}">Round.Duct</a></li>
                             <li class="breadcrumb-item"><a href="#">Fitting</a></li>
-                            <li class="breadcrumb-item"><a href="#">Rec.Frame</a></li>
-                            <li class="breadcrumb-item"><a href="#">Round.Frame</a></li>
-                            <li class="breadcrumb-item"><a href="#">End.Cap.Rec</a></li>
-                            <li class="breadcrumb-item"><a href="#">End.Cap.Round</a></li>
+                            <li class="breadcrumb-item"><a href="{{route('Rec.Frame')}}">Rec.Frame</a></li>
+                            <li class="breadcrumb-item"><a href="{{route('Round.Frame')}}">Round.Frame</a></li>
+                            <li class="breadcrumb-item"><a href="{{route('End_Cap_Rec')}}">End.Cap.Rec</a></li>
+                            <li class="breadcrumb-item"><a href="{{route('End_Cap_Round')}}">End.Cap.Round</a></li>
                             <li class="breadcrumb-item"><a href="#">Air.outlet.Plenum</a></li>
-                            <li class="breadcrumb-item"><a href="#">Bell.Mouse</a></li>
+                            <li class="breadcrumb-item"><a href="{{route('Bell_Mouse')}}">Bell.Mouse</a></li>
                         </ol>
                     </nav>
                     <hr class="my-3">
@@ -125,7 +125,7 @@
     <script src="{{ asset('js/buttons.html5.min.js') }}"></script>
     <script src="{{ asset('js/buttons.print.min.js') }}"></script>
     <script>
-        $(document).ready(function() {
+    $(document).ready(function() {
     $('.datatable').DataTable( {
         searching: false, paging: false, info: false,
         dom: 'Bfrtip',
@@ -150,6 +150,34 @@
         $('#sum').text(sum);
     }
     </script>
+    <script type="text/javascript">
+    $( document ).ready( function() {
+        var sum_duct_gage_KG = 0;
+        var sum_RecDuct_area = 0;
+        var sum_RecDuct_length = 0;
+        var sum_RecDuct_area_1_inch = 0;
+        var sum_RecDuct_area_2_inch = 0;
+        var sum_RecDuct_accoustic_area = 0;
+        var sum_RecDuct_cladding_area = 0;
+        $( "#example_1 tbody tr").each( function( index ) {
+            sum_duct_gage_KG += parseFloat($('.duct_gage_KG').text());
+            sum_RecDuct_area += parseFloat($('.RecDuct_area').text());
+            sum_RecDuct_length += parseFloat($('.RecDuct_length').text());
+            sum_RecDuct_area_1_inch += parseFloat($('.RecDuct_area_1_inch').text());
+            sum_RecDuct_area_2_inch += parseFloat($('.RecDuct_area_2_inch').text());
+            sum_RecDuct_accoustic_area += parseFloat($('.RecDuct_accoustic_area').text());
+            sum_RecDuct_cladding_area += parseFloat($('.RecDuct_cladding_area').text());
+        });
+        $( "#duct_gage_KG" ).text(  (sum_duct_gage_KG * 1.15).toFixed(2) );
+        $( "#RecDuct_area" ).text(  (sum_RecDuct_area * 1.15).toFixed(2) );
+        $( "#RecDuct_length" ).text(  (sum_RecDuct_length * 1.15).toFixed(2) );
+        $( "#RecDuct_area_1_inch" ).text(  (sum_RecDuct_area_1_inch * 1.15).toFixed(2) );
+        $( "#RecDuct_area_2_inch" ).text(  (sum_RecDuct_area_2_inch * 1.15).toFixed(2) );
+        $( "#RecDuct_accoustic_area" ).text(  (sum_RecDuct_accoustic_area * 1.15).toFixed(2) );
+        $( "#RecDuct_cladding_area" ).text(  (sum_RecDuct_cladding_area * 1.15).toFixed(2) );
+
+    });
+</script>
     <script src="{{ asset('js/sweetalert2@10.js') }}"></script>
     <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('js/alpine.min.js') }}" defer></script>

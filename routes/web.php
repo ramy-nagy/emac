@@ -40,15 +40,35 @@ Route::middleware('auth')->group(function () {
     Route::get('project/{model}',   [DashboardController::class, 'project_model'])->name('project.model');
     Route::resource('projects', ProjectController::class)->names('projects');
 
-    // sheets route
+    // sheets route Round
     Route::get('Rec_Duct',      [DashboardController::class, 'Rec_Duct'])->name('Rec.Duct');
     Route::post('RecDuct',      [DashboardController::class, 'RecDuct'])->name('RecDuct');
-    Route::post('RoundDust',    [DashboardController::class, 'RoundDust'])->name('RoundDust');
+
+    Route::get('Round_Duct',    [DashboardController::class, 'Round_Duct'])->name('Round.Duct');
+    Route::post('RoundDuct',    [DashboardController::class, 'RoundDuct'])->name('RoundDuct');
+    
+    Route::get('GetFitting',    [DashboardController::class, 'GetFitting'])->name('GetFitting');
+    Route::post('RoundDuct',    [DashboardController::class, 'RoundDuct'])->name('RoundDuct');
+
+    Route::get('Rec_Frame',     [DashboardController::class, 'Rec_Frame'])->name('Rec.Frame');
     Route::post('RecFrame',     [DashboardController::class, 'RecFrame'])->name('RecFrame');
+    
+    Route::get('Round_Frame',   [DashboardController::class, 'Round_Frame'])->name('Round.Frame');
     Route::post('RoundFrame',   [DashboardController::class, 'RoundFrame'])->name('RoundFrame');
+
+    Route::get('End_Cap_Rec',   [DashboardController::class, 'End_Cap_Rec'])->name('End_Cap_Rec');
     Route::post('EndCapRec',    [DashboardController::class, 'EndCapRec'])->name('EndCapRec');
+
+    Route::get('End_Cap_Round',   [DashboardController::class, 'End_Cap_Round'])->name('End_Cap_Round');
     Route::post('EndCapRound',  [DashboardController::class, 'EndCapRound'])->name('EndCapRound');
 
+    Route::get('Air_outlet_Plenum',   [DashboardController::class, 'Air_outlet_Plenum'])->name('Air_outlet_Plenum');
+    Route::post('EndCapRound',  [DashboardController::class, 'EndCapRound'])->name('EndCapRound');
+
+    Route::get('Bell_Mouse',   [DashboardController::class, 'Bell_Mouse'])->name('Bell_Mouse');
+    Route::post('BellMouse',  [DashboardController::class, 'BellMouse'])->name('BellMouse');
+
+    
     // profile for users
     Route::get('profile',  [ProfileController::class, 'show'])->name('profile.show');
     Route::put('profile',  [ProfileController::class, 'update'])->name('profile.update');

@@ -41,4 +41,8 @@ class Project extends Model
     {
         return $this->hasMany(EndCapRound::class, 'project_id');
     }
+    public function BellMouses()
+    {
+        return $this->hasMany(BellMouse::class, 'project_id');
+    }
 }

@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Project;
-
+use Auth;
 class ProjectController extends Controller
 {
     /**
@@ -47,14 +47,15 @@ class ProjectController extends Controller
      */
     public function show($project)
     {   
-        $project = Project::whereId($project)->with(['RecDucts'])->get();
-        if ($project->isEmpty())
-            abort(404);
-        if ($project->where('user_id',auth()->id())->isEmpty())
-            abort(401);
-            
+        $project = Project::whereId($project)->with(['RecDucts'])->firstOrFail();
+        // if ($project->isEmpty())
+        //     abort(404);
+        // if ($project->where('user_id',auth()->id())->isEmpty())
+        //     abort(401);
+            $projects = Auth::user()->projects()->latest()->get();
+
         //return $project;
-        return view('dashboard', compact('project'));
+        return view('sheets.Rec-Duct', compact('project', 'projects'));
     }
 
     /**
