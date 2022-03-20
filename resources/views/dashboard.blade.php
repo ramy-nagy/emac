@@ -22,7 +22,7 @@
                     </p>
                 </div>
             </div>
-            <div class=" px-4 py-3 mb-8 rounded-lg shadow-md dark:bg-gray-800">
+            {{-- <div class=" px-4 py-3 mb-8 rounded-lg shadow-md dark:bg-gray-800">
                 <span class="text-gray-700 dark:text-gray-400">Projects</span>
                 <form action="{{route("project") }}" method="get" enctype="multipart/form-data">
                     @csrf
@@ -39,7 +39,7 @@
                         </select>
                     </div>
                 </form>
-            </div>
+            </div> --}}
         </div>
     </div>
     {{-- <h4 class="mb-4 text-lg font-semibold text-gray-600 dark:text-gray-300">
