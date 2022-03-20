@@ -58,9 +58,13 @@
                         table.dataTable thead td {
                             padding: 5px 0px;
                         }
-                        table.dataTable th.dt-center, table.dataTable td.dt-center, table.dataTable td.dataTables_empty {
+
+                        table.dataTable th.dt-center,
+                        table.dataTable td.dt-center,
+                        table.dataTable td.dataTables_empty {
                             color: #fb866a;
                         }
+
                         .large-div-text {
                             padding: 20px;
                             border: 1px solid rgba(64, 189, 233, 0.42);
@@ -85,7 +89,24 @@
                             <li class="breadcrumb-item"><a href="#">Summary</a></li>
                             <li class="breadcrumb-item "><a href="{{route('Rec.Duct')}}">Rec.Duct</a></li>
                             <li class="breadcrumb-item"><a href="{{route('Round.Duct')}}">Round.Duct</a></li>
-                            <li class="breadcrumb-item"><a href="#">Fitting</a></li>
+                            <li class="breadcrumb-item">
+                                <ul class="navbar-nav">
+                                    <li class="nav-item dropdown">
+                                        <a class=" dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink"
+                                            role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                            Fitting
+                                        </a>
+                                        <ul class="dropdown-menu dropdown-menu-dark"
+                                            aria-labelledby="navbarDarkDropdownMenuLink">
+                                            <li><a class="dropdown-item" href="{{route('Rec-elbow')}}">Rec-Elbow</a></li>
+                                            <li><a class="dropdown-item" href="{{route('Rec-Reducer')}}">Rec-Reducer</a></li>
+                                            <li><a class="dropdown-item" href="{{route('Round-Reducer')}}">Round-Reducer</a></li>
+                                            <li><a class="dropdown-item" href="{{route('transition')}}">Transition</a></li>
+                                            <li><a class="dropdown-item" href="{{route('Rec-elbow')}}">Offset</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
                             <li class="breadcrumb-item"><a href="{{route('Rec.Frame')}}">Rec.Frame</a></li>
                             <li class="breadcrumb-item"><a href="{{route('Round.Frame')}}">Round.Frame</a></li>
                             <li class="breadcrumb-item"><a href="{{route('End_Cap_Rec')}}">End.Cap.Rec</a></li>
@@ -125,7 +146,7 @@
     <script src="{{ asset('js/buttons.html5.min.js') }}"></script>
     <script src="{{ asset('js/buttons.print.min.js') }}"></script>
     <script>
-    $(document).ready(function() {
+        $(document).ready(function() {
     $('.datatable').DataTable( {
         searching: false, paging: false, info: false,
         dom: 'Bfrtip',
@@ -151,7 +172,7 @@
     }
     </script>
     <script type="text/javascript">
-    $( document ).ready( function() {
+        $( document ).ready( function() {
         var sum_duct_gage_KG = 0;
         var sum_RecDuct_area = 0;
         var sum_RecDuct_length = 0;
@@ -177,7 +198,7 @@
         $( "#RecDuct_cladding_area" ).text(  (sum_RecDuct_cladding_area * 1.15).toFixed(2) );
 
     });
-</script>
+    </script>
     <script src="{{ asset('js/sweetalert2@10.js') }}"></script>
     <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('js/alpine.min.js') }}" defer></script>

@@ -13,6 +13,11 @@ use App\Models\RoundFrame;
 use App\Models\EndCapRec;
 use App\Models\EndCapRound;
 use App\Models\BellMouse;
+use App\Models\FittingRecElbow;
+use App\Models\FittingRecReducer;
+use App\Models\FittingRoundReducer;
+use App\Models\FittingTransition;
+
 use App\Models\Project;
 
 class DashboardController extends Controller
@@ -125,6 +130,46 @@ class DashboardController extends Controller
         $project  = Project::whereId($project_id)->with('BellMouses')->first();
         return view('sheets.Bell-Mouse', compact('projects', 'project_id', 'project'));
     }
+    public function FittingRec_elbow()
+    { 
+        $projects = Auth::user()->projects()->latest()->get();
+        if ($projects->isEmpty())
+        return redirect('projects');
+        
+        $project_id = $projects[0]->id;
+        $project  = Project::whereId($project_id)->with('FittingRecElbows')->first();
+        return view('sheets.Fitting_Rec_elbow', compact('projects', 'project_id', 'project'));
+    }
+    public function FittingRecReducer()
+    { 
+        $projects = Auth::user()->projects()->latest()->get();
+        if ($projects->isEmpty())
+        return redirect('projects');
+        
+        $project_id = $projects[0]->id;
+        $project  = Project::whereId($project_id)->with('FittingRecReducers')->first();
+        return view('sheets.Fitting_Rec_Reducer', compact('projects', 'project_id', 'project'));
+    }
+    public function FittingRoundReducer()
+    { 
+        $projects = Auth::user()->projects()->latest()->get();
+        if ($projects->isEmpty())
+        return redirect('projects');
+        
+        $project_id = $projects[0]->id;
+        $project  = Project::whereId($project_id)->with('FittingRoundReducers')->first();
+        return view('sheets.Fitting_Round_Reducer', compact('projects', 'project_id', 'project'));
+    }
+    public function FittingTransition()
+    { 
+        $projects = Auth::user()->projects()->latest()->get();
+        if ($projects->isEmpty())
+        return redirect('projects');
+        
+        $project_id = $projects[0]->id;
+        $project  = Project::whereId($project_id)->with('FittingTransitions')->first();
+        return view('sheets.Fitting_Transition', compact('projects', 'project_id', 'project'));
+    }
     //post  
     public function RecDuct(Request $request)
     {
@@ -157,7 +202,7 @@ class DashboardController extends Controller
             return redirect()->back()->with(['type'=>'error','message'=>"Something goes wrong while creating!!"]);
         }
     }
-    public function RoundDust(Request $request)
+    public function RoundDuct(Request $request)
     {
 
         try{
@@ -335,8 +380,144 @@ class DashboardController extends Controller
             return redirect()->back()->with(['type'=>'error','message'=>"Something goes wrong while creating!!"]);
         }
     }
+    public function Rec_elbow(Request $request)
+    {
+        //return $request->all();
+        try{
+            $user = Auth::user();
+            FittingRecElbow::create([
+                'user_id'   =>$user->id,
+                'project_id'   =>$request->project_id,
+                "tag_no"    => $request->tag_no,
+                "description"    =>$request->description,
+                "location"    => 'As per DWG',
 
+                "width"     => $request->width,
+                "depth"     => $request->depth,
+                "length1"     => $request->length1,
+                "length2"     => $request->length2,
 
+                "area"      => $request->area,
+                "thermal_thickness"=> $request->thermal_thickness,
+                "area_1_inch"   => $request->Area_1_inch,
+                "area_2_inch"   => $request->Area_2_inch,
+                "cladding_option"   => $request->cladding_option,
+                "cladding_area"     => $request->Cladding_Area,
+                "duct_gage"    => $request->duct_gage,
+                "thickness" => $request->thickness,
+                "duct_weight"=> $request->duct_weight,
+
+            ]);             
+            return redirect()->back()->with(['type'=>'success','message'=>"Successfully Create!!"]);
+                            
+        }catch(\Exception $e){
+            return redirect()->back()->with(['type'=>'error','message'=>"Something goes wrong while creating!!"]);
+        }
+    }
+
+    public function Rec_Reducer(Request $request)
+    {
+        //return $request->all();
+        try{
+            $user = Auth::user();
+            FittingRecReducer::create([
+                'user_id'   =>$user->id,
+                'project_id'   =>$request->project_id,
+                "tag_no"    => $request->tag_no,
+                "description"    =>$request->description,
+                "location"    => 'As per DWG',
+
+                "width1"     => $request->width1,
+                "depth1"     => $request->depth1,
+                "width2"     => $request->width2,
+                "depth2"     => $request->depth2,
+                "length"     => $request->length,
+
+                "area"      => $request->area,
+                "thermal_thickness"=> $request->thermal_thickness,
+                "area_1_inch"   => $request->Area_1_inch,
+                "area_2_inch"   => $request->Area_2_inch,
+                "cladding_option"   => $request->cladding_option,
+                "cladding_area"     => $request->Cladding_Area,
+                "duct_gage"    => $request->duct_gage,
+                "thickness" => $request->thickness,
+                "duct_weight"=> $request->duct_weight,
+
+            ]);             
+            return redirect()->back()->with(['type'=>'success','message'=>"Successfully Create!!"]);
+                            
+        }catch(\Exception $e){
+            return redirect()->back()->with(['type'=>'error','message'=>"Something goes wrong while creating!!"]);
+        }
+    }
+    public function Round_Reducer(Request $request)
+    {
+        //return $request->all();
+        try{
+            $user = Auth::user();
+            FittingRoundReducer::create([
+                'user_id'   =>$user->id,
+                'project_id'   =>$request->project_id,
+                "tag_no"    => $request->tag_no,
+                "description"    =>$request->description,
+                "location"    => 'As per DWG',
+
+                "biger_diameter"     => $request->biger_diameter,
+                "smaller_diameter"     => $request->smaller_diameter,
+                "length"     => $request->length,
+
+                "area"      => $request->area,
+                "thermal_thickness"=> $request->thermal_thickness,
+                "area_1_inch"   => $request->Area_1_inch,
+                "area_2_inch"   => $request->Area_2_inch,
+                "cladding_option"   => $request->cladding_option,
+                "cladding_area"     => $request->Cladding_Area,
+                "duct_gage"    => $request->duct_gage,
+                "thickness" => $request->thickness,
+                "duct_weight"=> $request->duct_weight,
+
+            ]);             
+            return redirect()->back()->with(['type'=>'success','message'=>"Successfully Create!!"]);
+                            
+        }catch(\Exception $e){
+            return redirect()->back()->with(['type'=>'error','message'=>"Something goes wrong while creating!!"]);
+        }
+    }
+    public function Fitting_Transition(Request $request)
+    {
+        //return $request->all();
+        try{
+            $user = Auth::user();
+            FittingTransition::create([
+                'user_id'   =>$user->id,
+                'project_id'   =>$request->project_id,
+                "tag_no"    => $request->tag_no,
+                "description"    =>$request->description,
+                "location"    => 'As per DWG',
+
+                "width"     => $request->width,
+                "depth"     => $request->depth,
+                "diameter"     => $request->diameter,
+                "length"     => $request->length,
+
+                "area"      => $request->area,
+                "thermal_thickness"=> $request->thermal_thickness,
+                "area_1_inch"   => $request->Area_1_inch,
+                "area_2_inch"   => $request->Area_2_inch,
+                "cladding_option"   => $request->cladding_option,
+                "cladding_area"     => $request->Cladding_Area,
+                "duct_gage"    => $request->duct_gage,
+                "thickness" => $request->thickness,
+                "duct_weight"=> $request->duct_weight,
+
+            ]);             
+            return redirect()->back()->with(['type'=>'success','message'=>"Successfully Create!!"]);
+                            
+        }catch(\Exception $e){
+            return redirect()->back()->with(['type'=>'error','message'=>"Something goes wrong while creating!!"]);
+        }
+    }
+    
     public function project(Request $request)
     {
         $project_id = $request->project_id;

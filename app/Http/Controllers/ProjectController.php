@@ -45,17 +45,14 @@ class ProjectController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($project)
+    public function show($project) 
     {   
         $project = Project::whereId($project)->with(['RecDucts'])->firstOrFail();
-        // if ($project->isEmpty())
-        //     abort(404);
-        // if ($project->where('user_id',auth()->id())->isEmpty())
-        //     abort(401);
-            $projects = Auth::user()->projects()->latest()->get();
+        $project_id = $project->id;
+        $projects = Auth::user()->projects()->latest()->get();
 
         //return $project;
-        return view('sheets.Rec-Duct', compact('project', 'projects'));
+        return view('sheets.Rec-Duct', compact('project_id', 'project', 'projects'));
     }
 
     /**

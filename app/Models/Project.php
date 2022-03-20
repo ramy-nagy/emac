@@ -45,4 +45,20 @@ class Project extends Model
     {
         return $this->hasMany(BellMouse::class, 'project_id');
     }
+    public function FittingRecElbows()
+    {
+        return $this->hasMany(FittingRecElbow::class, 'project_id');
+    }
+    public function FittingRecReducers()
+    {
+        return $this->hasMany(FittingRecReducer::class, 'project_id');
+    }
+    public function FittingRoundReducers()
+    {
+        return $this->hasMany(FittingRoundReducer::class, 'project_id');
+    }
+    public function FittingTransitions()
+    {
+        return $this->hasMany(FittingTransition::class, 'project_id');
+    }
 }

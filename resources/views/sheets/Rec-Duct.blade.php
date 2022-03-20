@@ -58,22 +58,22 @@
                     </label>
                     <label class=" text-sm col-md-2 ">
                         <span class="text-gray-700 dark:text-gray-400">Width (mm)</span>
-                        <input type="number" min="50" id="Width" value="50" name="width"
+                        <input type="number" step="0.01" min="50" id="Width" value="50" name="width"
                             class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input">
                     </label>
                     <label class=" text-sm col-md-2 ">
                         <span class="text-gray-700 dark:text-gray-400">Depth (mm)</span>
-                        <input type="number" min="50" id="Depth" value="50" name="depth"
+                        <input type="number" step="0.01" min="50" id="Depth" value="50" name="depth"
                             class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input">
                     </label>
                     <label class=" text-sm col-md-2 ">
                         <span class="text-gray-700 dark:text-gray-400">Length (m)</span>
-                        <input type="number" min="0" id="Length" name="length" value="0"
+                        <input type="number" step="0.01" min="0" id="Length" name="length" value="0"
                             class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input">
                     </label>
                     <label class=" text-sm col-md-2 ">
                         <span class="text-gray-700 dark:text-gray-400">Area (m^2)</span>
-                        <input type="number" min="0" value="0" id="Area" readonly name="area"
+                        <input type="number" step="0.01" min="0" value="0" id="Area" readonly name="area"
                             class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input">
                     </label>
                 </div>
@@ -90,12 +90,12 @@
                     </label>
                     <label class=" text-sm col-md-3">
                         <span class="text-gray-700 dark:text-gray-400">Area 1 inch</span>
-                        <input type="number" min="0" value="0" id="Area_1_inch" readonly name="Area_1_inch"
+                        <input type="number" step="0.01" min="0" value="0" id="Area_1_inch" readonly name="Area_1_inch"
                             class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input">
                     </label>
                     <label class=" text-sm col-md-3">
                         <span class="text-gray-700 dark:text-gray-400">Area 2 inch</span>
-                        <input type="number" min="0" value="0" id="Area_2_inch" readonly name="Area_2_inch"
+                        <input type="number" step="0.01" min="0" value="0" id="Area_2_inch" readonly name="Area_2_inch"
                             class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input">
                     </label>
                 </div>
@@ -111,7 +111,7 @@
                     </label>
                     <label class="text-sm col-md-5">
                         <span class="text-gray-700 dark:text-gray-400">Area (m^2)</span>
-                        <input type="number" min="0" value="0" id="Cladding_Area" readonly name="Cladding_Area"
+                        <input type="number" step="0.01" min="0" value="0" id="Cladding_Area" readonly name="Cladding_Area"
                             class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input">
                     </label>
                 </div>
@@ -127,12 +127,12 @@
                     </label>
                     <label class=" text-sm col-md-3">
                         <span class="text-gray-700 dark:text-gray-400">Length (m)</span>
-                        <input type="number" min="0" id="Accoustic_Length" name="accoustic_length" value="0"
+                        <input type="number" step="0.01" min="0" id="Accoustic_Length" name="accoustic_length" value="0"
                             class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input">
                     </label>
                     <label class=" text-sm col-md-3">
                         <span class="text-gray-700 dark:text-gray-400">Area (m^2)</span>
-                        <input type="number" min="0" id="Accoustic_Area" readonly name="Accoustic_Area" value="0"
+                        <input type="number" step="0.01" min="0" id="Accoustic_Area" readonly name="Accoustic_Area" value="0"
                             class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input">
                     </label>
                 </div>
@@ -159,12 +159,12 @@
                     </label>
                     <label class=" text-sm col-md-4">
                         <span class="text-gray-700 dark:text-gray-400">Thickness</span>
-                        <input type="number" readonly id="thickness" name="thickness" value="1.006"
+                        <input type="number" step="0.01" readonly id="thickness" name="thickness" value="1.006"
                             class="thickness block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input">
                     </label>
                     <label class=" text-sm col-md-3">
                         <span class="text-gray-700 dark:text-gray-400">weight (Kg)</span>
-                        <input type="number" readonly id="duct_weight" name="duct_weight" value="0"
+                        <input type="number" step="0.01" readonly id="duct_weight" name="duct_weight" value="0"
                             class="duct_weight block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input">
                     </label>
                 </div>

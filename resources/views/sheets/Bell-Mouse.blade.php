@@ -55,32 +55,32 @@
                         <div class="why dark:bg-gray-800" style="width: 240px">Machine bell mouse data</div>
                         <label class=" text-sm col-md-1">
                             <span class="text-gray-700 dark:text-gray-400">Face Width (mm)</span>
-                            <input type="number" min="0" id="bell_mouse_face_width" value="0" name="face_width"
+                            <input type="number" step="0.01" min="0" id="bell_mouse_face_width" value="0" name="face_width"
                                 class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input">
                         </label>
                         <label class=" text-sm col-md-2">
                             <span class="text-gray-700 dark:text-gray-400">Face Depth (mm)</span>
-                            <input type="number" min="0" id="bell_mouse_face_depth" name="face_depth" value="0"
+                            <input type="number" step="0.01" min="0" id="bell_mouse_face_depth" name="face_depth" value="0"
                                 class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input">
                         </label>
                         <label class=" text-sm col-md-2">
                             <span class="text-gray-700 dark:text-gray-400">Main Duct Width (mm)</span>
-                            <input type="number" min="0" id="bell_mouse_duct_width" name="duct_width" value="0"
+                            <input type="number" step="0.01" min="0" id="bell_mouse_duct_width" name="duct_width" value="0"
                                 class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input">
                         </label>
                         <label class=" text-sm col-md-2">
                             <span class="text-gray-700 dark:text-gray-400">Main Duct Depth (mm)</span>
-                            <input type="number" min="0" id="bell_mouse_duct_depth" name="duct_depth" value="0"
+                            <input type="number" step="0.01" min="0" id="bell_mouse_duct_depth" name="duct_depth" value="0"
                                 class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input">
                         </label>
                         <label class=" text-sm col-md-2">
                             <span class="text-gray-700 dark:text-gray-400">Plenum Length (mm)</span>
-                            <input type="number" min="0" id="bell_mouse_plenum_length" name="plenum_length" value="0"
+                            <input type="number" step="0.01" min="0" id="bell_mouse_plenum_length" name="plenum_length" value="0"
                                 class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input">
                         </label>
                         <label class="mr-3 text-sm col-md-2">
                             <span class="text-gray-700 dark:text-gray-400">Area (m^2)</span>
-                            <input type="number" min="0" value="0" id="bell-mouse-area" readonly name="area"
+                            <input type="number" step="0.01" min="0" value="0" id="bell-mouse-area" readonly name="area"
                                 class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input">
                         </label>
                     </div>
@@ -97,13 +97,13 @@
                         </label>
                         <label class=" text-sm col-md-3">
                             <span class="text-gray-700 dark:text-gray-400">Area 1 inch</span>
-                            <input type="number" min="0" value="0" id="bell-mouse-Area_1_inch" readonly
+                            <input type="number" step="0.01" min="0" value="0" id="bell-mouse-Area_1_inch" readonly
                                 name="Area_1_inch"
                                 class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input">
                         </label>
                         <label class=" text-sm col-md-3">
                             <span class="text-gray-700 dark:text-gray-400">Area 2 inch</span>
-                            <input type="number" min="0" value="0" id="bell-mouse-Area_2_inch" readonly
+                            <input type="number" step="0.01" min="0" value="0" id="bell-mouse-Area_2_inch" readonly
                                 name="Area_2_inch"
                                 class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input">
                         </label>
@@ -120,7 +120,7 @@
                         </label>
                         <label class=" text-sm col-md-5">
                             <span class="text-gray-700 dark:text-gray-400">Area (m^2)</span>
-                            <input type="number" min="0" value="0" id="bell-mouse-Cladding_Area" readonly
+                            <input type="number" step="0.01" min="0" value="0" id="bell-mouse-Cladding_Area" readonly
                                 name="Cladding_Area"
                                 class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input">
                         </label>
@@ -148,12 +148,12 @@
                         </label>
                         <label class=" text-sm col-md-3">
                             <span class="text-gray-700 dark:text-gray-400">Thickness</span>
-                            <input type="number" readonly id="bell-mouse-thickness" name="thickness" value="1.006"
+                            <input type="number" step="0.01" readonly id="bell-mouse-thickness" name="thickness" value="1.006"
                                 class="thickness block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input">
                         </label>
                         <label class=" text-sm col-md-3">
                             <span class="text-gray-700 dark:text-gray-400">weight (Kg)</span>
-                            <input type="number" readonly id="bell-mouse-duct_weight" name="duct_weight" value="0"
+                            <input type="number" step="0.01" readonly id="bell-mouse-duct_weight" name="duct_weight" value="0"
                                 class="duct_weight block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input">
                         </label>
                     </div>

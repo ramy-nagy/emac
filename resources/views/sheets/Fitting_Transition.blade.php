@@ -1,6 +1,6 @@
 <x-app-layout>
-    <span class="text-gray-700 dark:text-gray-400">Projects</span>
-    <form action="{{route("project.model", 'Rec-Frame') }}" method="get" enctype="multipart/form-data">
+<span class="text-gray-700 dark:text-gray-400">Projects</span>
+    <form action="{{route("project.model", 'Fitting_Transition') }}" method="get" enctype="multipart/form-data">
         @csrf
         <div class="mb-2 form-group">
             <label for="country"></label>
@@ -17,16 +17,15 @@
     </form>
     <div class="col-md-12">
         <div class="px-4  py-3 mb-3 text-gray-600 dark:text-gray-300 rounded-lg shadow-md dark:bg-gray-800">
-            Projects NO :: {{$project_id}}<br>
-            Duct Bending distance :: 0.05 <br>
-            Cladding Bending distance :: 0.07 <br>
-            <form action="{{route('RecFrame')}}" method="post">
+            Project NO :: {{$project_id ?? ''}} - Fitting_Transition.
+            <form action="{{route('Fitting_Transition')}}" method="post">
                 @csrf
                 <input type="hidden" value="{{$project_id ?? '' }}" name="project_id">
                 <div class="row mt-3">
-                    <div class=" col-md-5 border border-dark p-2 my-2 mr-1 large-div-text" style="width: 15% !important ">
-                        <div class="why dark:bg-gray-800">Machine data</div>
-                        <label class=" text-sm col-md-5">
+                    <div class=" col-md-5 border border-dark p-2 my-2 mr-1 large-div-text"
+                        style="">
+                        <div class="why dark:bg-gray-800" style="text-align:  !important;">Machine data</div>
+                        <label class=" text-sm col-md-3">
                             <span class="text-gray-700 dark:text-gray-400">Tag No</span>
                             <select name="tag_no"
                                 class="block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-select focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray">
@@ -41,7 +40,7 @@
                                 <option value="FCU-09">FCU-09</option>
                             </select>
                         </label>
-                        <label class=" text-sm col-md-6">
+                        <label class=" text-sm col-md-4">
                             <span class="text-gray-700 dark:text-gray-400">Description</span>
                             <select name="description"
                                 class="block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-select focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray">
@@ -49,27 +48,43 @@
                                 <option value="Fresh air handling unit">Fresh air handling unit</option>
                             </select>
                         </label>
+                        <label class=" text-sm col-md-4">
+                            <span class="text-gray-700 dark:text-gray-400">Location</span>
+                            <select name="location"
+                                class="block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-select focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray">
+                                <option value="As per DWG">As per DWG</option>
+                            </select>
+                        </label>
                     </div>
-                    <div class=" col-md-5 border border-dark p-2 my-2 mr-1">
-                        <div class="why dark:bg-gray-800">Duct Data</div>
-                        <label class=" text-sm col-md-3">
+                    <div class=" col-md-6 border border-dark p-2 my-2 mr-1" style="">
+                        <div class="why dark:bg-gray-800" style="width: 240px">Fitting data</div>
+                        <label class=" text-sm col-md-2">
                             <span class="text-gray-700 dark:text-gray-400">Width (mm)</span>
-                            <input type="number" step="0.01" min="50" id="rec-frame-Width" value="50" name="width"
-                                class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input">
-                        </label>
-                        <label class=" text-sm col-md-3">
-                            <span class="text-gray-700 dark:text-gray-400">Depth (mm)</span>
-                            <input type="number" step="0.01" min="50" id="rec-frame-Depth" value="50" name="depth"
-                                class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input">
-                        </label>
-                        <label class=" text-sm col-md-3">
-                            <span class="text-gray-700 dark:text-gray-400">Length (m)</span>
-                            <input type="number" step="0.01" id="rec-frame-Length" name="length" value="0"
+                            <input type="number" step="0.01" min="0" id="Width" value="0"
+                                name="width"
                                 class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input">
                         </label>
                         <label class=" text-sm col-md-2">
+                            <span class="text-gray-700 dark:text-gray-400">Depth (mm)</span>
+                            <input type="number" step="0.01" min="0" id="Depth" name="depth"
+                                value="0"
+                                class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input">
+                        </label>
+                        <label class=" text-sm col-md-2">
+                            <span class="text-gray-700 dark:text-gray-400">Diameter (mm)</span>
+                            <input type="number" step="0.01" min="0" id="Diameter" name="diameter"
+                                value="0"
+                                class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input">
+                        </label>
+                        <label class=" text-sm col-md-2">
+                            <span class="text-gray-700 dark:text-gray-400">Length (mm)</span>
+                            <input type="number" step="0.01" min="0" id="Length" name="length"
+                                value="0"
+                                class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input">
+                        </label>
+                        <label class="mr-3 text-sm col-md-3">
                             <span class="text-gray-700 dark:text-gray-400">Area (m^2)</span>
-                            <input type="number" step="0.01" value="0" id="rec-frame-Area" readonly name="area"
+                            <input type="number" step="0.01" min="0" value="0" id="Rec_Elbow_area" readonly name="area"
                                 class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input">
                         </label>
                     </div>
@@ -77,7 +92,7 @@
                         <div class="why dark:bg-gray-800" style="width: 250px">Thermal insulation data</div>
                         <label class=" text-sm col-md-5">
                             <span class="text-gray-700 dark:text-gray-400">Thickness</span>
-                            <select id="rec-frame-Thickness" name="thermal_thickness"
+                            <select id="Rec_Elbow-Thickness" name="thermal_thickness"
                                 class="block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-select focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray">
                                 <option value="0"></option>
                                 <option value="25">25</option>
@@ -86,12 +101,14 @@
                         </label>
                         <label class=" text-sm col-md-3">
                             <span class="text-gray-700 dark:text-gray-400">Area 1 inch</span>
-                            <input type="number" step="0.01" min="0" value="0" id="rec-frame-Area_1_inch" readonly name="Area_1_inch"
+                            <input type="number" step="0.01" min="0" value="0" id="Rec_Elbow-Area_1_inch" readonly
+                                name="Area_1_inch"
                                 class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input">
                         </label>
                         <label class=" text-sm col-md-3">
                             <span class="text-gray-700 dark:text-gray-400">Area 2 inch</span>
-                            <input type="number" step="0.01" min="0" value="0" id="rec-frame-Area_2_inch" readonly name="Area_2_inch"
+                            <input type="number" step="0.01" min="0" value="0" id="Rec_Elbow-Area_2_inch" readonly
+                                name="Area_2_inch"
                                 class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input">
                         </label>
                     </div>
@@ -99,7 +116,7 @@
                         <div class="why dark:bg-gray-800">Cladding</div>
                         <label class=" text-sm col-md-5">
                             <span class="text-gray-700 dark:text-gray-400">Cladding</span>
-                            <select id="rec-frame-Cladding" name="cladding_option"
+                            <select id="Rec_Elbow-Cladding" name="cladding_option"
                                 class="block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-select focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray">
                                 <option value="0">no</option>
                                 <option value="1">yes</option>
@@ -107,16 +124,17 @@
                         </label>
                         <label class=" text-sm col-md-5">
                             <span class="text-gray-700 dark:text-gray-400">Area (m^2)</span>
-                            <input type="number" step="0.01" min="0" value="0" id="rec-frame-Cladding_Area" readonly name="Cladding_Area"
+                            <input type="number" step="0.01" min="0" value="0" id="Rec_Elbow-Cladding_Area" readonly
+                                name="Cladding_Area"
                                 class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input">
                         </label>
                     </div>
-                    <div class=" col-md-3 border border-dark p-2 my-2 mr-1">
+                    <div class=" col-md-4 border border-dark p-2 my-2 mr-1">
                         <div class="why dark:bg-gray-800">Summary</div>
                         <label class=" text-sm col-md-5">
-                            <span class="duct_gage text-gray-700 dark:text-gray-400">Duct Gage</span>
-                            <select id="rec-frame-duct_gage" name="duct_gage"
-                                class="block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-select focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray">
+                            <span class="text-gray-700 dark:text-gray-400">Duct Gage</span>
+                            <select id="Rec_Elbow-duct_gage" name="duct_gage"
+                                class="duct_gage block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-select focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray">
                                 <option value="22">22</option>
                                 <option value="10">10</option>
                                 <option value="11">11</option>
@@ -125,8 +143,8 @@
                                 <option value="14">14</option>
                                 <option value="16">16</option>
                                 <option value="18">18</option>
-                                <option value="20">20</option>
                                 <option value="24">24</option>
+                                <option value="20">20</option>
                                 <option value="26">26</option>
                                 <option value="28">28</option>
                                 <option value="30">30</option>
@@ -134,16 +152,18 @@
                         </label>
                         <label class=" text-sm col-md-3">
                             <span class="text-gray-700 dark:text-gray-400">Thickness</span>
-                            <input type="number" step="0.01" readonly id="rec-frame-thickness" name="thickness" value=".853"
+                            <input type="number" step="0.01" readonly id="Rec_Elbow-thickness" name="thickness"
+                                value="0.853"
                                 class="thickness block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input">
                         </label>
                         <label class=" text-sm col-md-3">
                             <span class="text-gray-700 dark:text-gray-400">weight (Kg)</span>
-                            <input type="number" step="0.01" readonly id="rec-frame-duct_weight" name="duct_weight" value="0"
+                            <input type="number" step="0.01" readonly id="Rec_Elbow-duct_weight" name="duct_weight"
+                                value="0"
                                 class="duct_weight block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input">
                         </label>
                     </div>
-                    <div class="mt-8 col-md-4 row">
+                    <div class="mt-8 col-md-2 row">
                         <div class="col-md-2">
                             <button type="submit" class="btn btn-success mt-4">Save</button>
                         </div>
@@ -152,6 +172,7 @@
             </form>
         </div>
     </div>
+
     <div class="col-sm-12">
         <div class="app-card-body w-full overflow-hidden rounded-lg shadow-xs">
             <div class="table-responsive">
@@ -162,6 +183,7 @@
                             <th class="py-3">Tag no</th>
                             <th class="py-3">Width</th>
                             <th class="py-3">Depth</th>
+                            <th class="py-3">Diameter</th>
                             <th class="py-3">Length</th>
                             <th class="py-3">Area</th>
                             <th class="py-3">Thickness</th>
@@ -177,19 +199,27 @@
                         </tr>
                     </thead>
                     <tbody class=" divide-y dark:divide-gray-700 dark:bg-gray-800">
-                        @forelse ($project->RecFrames as $RecDuct)
+                        @forelse ($project->FittingTransitions as $RecDuct)
                         <tr class="text-gra y-700 dark:text-gray-400">
                             <td class="py-3 border border-secondary border-end">{{$RecDuct->tag_no ?? ''}}</td>
                             <td class="py-3 border border-secondary border-end">{{$RecDuct->width ?? ''}}</td>
                             <td class="py-3 border border-secondary border-end">{{$RecDuct->depth ?? ''}}</td>
-                            <td class="py-3 border border-secondary border-end RecDuct_length">{{$RecDuct->length ?? ''}}</td>
-                            <td class="py-3 border border-secondary border-end RecDuct_area">{{$RecDuct->area ?? ''}}</td>
-                            <td class="py-3 border border-secondary border-end">{{$RecDuct->thermal_thickness ?? ''}}</td>
-                            <td class="py-3 border border-secondary border-end RecDuct_area_1_inch">{{$RecDuct->area_1_inch ?? ''}}</td>
-                            <td class="py-3 border border-secondary border-end RecDuct_area_2_inch">{{$RecDuct->area_2_inch ?? ''}}</td>
-                            <td class="py-3 border border-secondary border-end">{{$RecDuct->cladding_option == 1 ? 'yes':
+                            <td class="py-3 border border-secondary border-end">{{$RecDuct->diameter ?? ''}}</td>
+                            <td class="py-3 border border-secondary border-end">{{$RecDuct->length ?? ''}}</td>
+
+                            <td class="py-3 border border-secondary border-end RecDuct_area">{{$RecDuct->area ?? ''}}
+                            </td>
+                            <td class="py-3 border border-secondary border-end">{{$RecDuct->thermal_thickness ?? ''}}
+                            </td>
+                            <td class="py-3 border border-secondary border-end RecDuct_area_1_inch">
+                                {{$RecDuct->area_1_inch ?? ''}}</td>
+                            <td class="py-3 border border-secondary border-end RecDuct_area_2_inch">
+                                {{$RecDuct->area_2_inch ?? ''}}</td>
+                            <td class="py-3 border border-secondary border-end">{{$RecDuct->cladding_option == 1 ?
+                                'yes':
                                 'no'}}</td>
-                            <td class="py-3 border border-secondary border-end RecDuct_cladding_area">{{$RecDuct->cladding_area ?? ''}}</td>
+                            <td class="py-3 border border-secondary border-end RecDuct_cladding_area">
+                                {{$RecDuct->cladding_area ?? ''}}</td>
                             <td class="py-3 border border-secondary border-end">{{$RecDuct->duct_gage ?? ''}}</td>
                             <td class="py-3 border border-secondary border-end">{{$RecDuct->thickness ?? ''}}</td>
                             <td class="py-3 border border-secondary border-end  duct_gage_KG">{{$RecDuct->duct_weight ??
@@ -205,7 +235,7 @@
                                 </a>
                             </td> --}}
                             <td>
-                                <a href="{{ route('delete',['model'=>'RecFrame', 'id'=> $RecDuct->id]) }}"
+                                <a href="{{ route('delete',['model'=>'FittingTransition', 'id'=> $RecDuct->id]) }}"
                                     class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-purple-600 rounded-lg dark:text-gray-400 focus:outline-none focus:shadow-outline-gray"
                                     aria-label="delete">
                                     <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
@@ -223,115 +253,88 @@
             </div>
         </div>
     </div>
-    <div class="col-md-4 mt-3">
-        <div class="w-full mb-8 overflow-hidden rounded-lg shadow-xs">
-            <div class="w-full overflow-x-auto">
-                <table class="w-full whitespace-no-wrap">
-                    <tbody class=" divide-y dark:divide-gray-700 dark:bg-gray-800">
-                        <tr class="text-gray-700 dark:text-gray-400">
-                            <td class="px-4 py-3 text-sm">
-                                Loss Factor <span class="text-lg">15%</span>
-                            </td>
-                        </tr>
-                        <tr class="text-gray-700 dark:text-gray-400">
-                            <td class="px-4 py-3 text-sm">
-                                Total galvanized sheet metal duct [KG] -- <span class="text-lg" id="duct_gage_KG"></span>
-                            </td>
-                        </tr>
-                        <tr class="text-gray-700 dark:text-gray-400">
-                            <td class="px-4 py-3 text-sm">
-                                Total galvanized sheet metal Area [m2] --<span class="text-lg" id="RecDuct_area"></span>
-                            </td>
-                        </tr>
-                        <tr class="text-gray-700 dark:text-gray-400">
-                            <td class="px-4 py-3 text-sm">
-                                Total galvanized sheet metal Length ( LM ) -- <span class="text-lg" id="RecDuct_length"></span>
-                            </td>
-                        </tr>
-                        <tr class="text-gray-700 dark:text-gray-400">
-                            <td class="px-4 py-3 text-sm">
-                                Total insulation  Area [m2] 1 inch thickness -- <span class="text-lg" id="RecDuct_area_1_inch"></span>
-                            </td>
-                        </tr>
-                        <tr class="text-gray-700 dark:text-gray-400">
-                            <td class="px-4 py-3 text-sm">
-                                Total insulation  Area [m2] 2 inch thickness --<span class="text-lg" id="RecDuct_area_2_inch"></span>
-                            </td>
-                        </tr>
-                        <tr class="text-gray-700 dark:text-gray-400">
-                            <td class="px-4 py-3 text-sm">
-                                Total Acoustic insulation Area [m2]  --<span class="text-lg" id="RecDuct_accoustic_area"></span>
-                            </td>
-                        </tr>
-                        <tr class="text-gray-700 dark:text-gray-400">
-                            <td class="px-4 py-3 text-sm">
-                                Total Cladding  Area [m2] --<span class="text-lg" id="RecDuct_cladding_area"></span>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-    
-        </div>
-    </div>
-
-@push('scripts')
-<script>
-    // every input in form
+    @push('scripts')
+    <script>
+        //-- 
+        // every input in form 
         $("input[type='number']").change(function(){
-            var rec_frame_Width = parseInt($("#rec-frame-Width").val());
-            var rec_frame_Depth = parseInt($("#rec-frame-Depth").val());
-            var rec_frame_Length = parseInt($("#rec-frame-Length").val());
-
-            if (rec_frame_Length > 1.5) {
-                var result = (rec_frame_Width/1000+rec_frame_Depth/1000) * 2 * (2*.05) * Math.round(rec_frame_Length/1.5);
-            }else{
-                var result = (rec_frame_Width/1000+rec_frame_Depth/1000)*2*(.1)
-            }
+            var Width = parseFloat($("#Width").val());
+            var Depth = parseFloat($("#Depth").val());
+            var Diameter = parseFloat($("#Diameter").val());
+            var Length = parseFloat($("#Length").val());
+            var result = (2*(Width+Depth)*Length-((Width+Depth)-(3.147*Diameter))*Length)/1000000;
             // area change
-            $( "#rec-frame-Area" ).val(result.toFixed(2));
-            // duct_weight change
-            $( "#rec-frame-duct_weight" ).val($("#rec-frame-Area").val() * duct_weight[$("#rec-frame-duct_gage").val()]);
+            $( "#Rec_Elbow_area" ).val(result.toFixed(2));
+            // duct_weight change 
+            var Rec_Elbow_duct_weight = $("#Rec_Elbow_area").val() * duct_weight[$("#Rec_Elbow-duct_gage").val()];
+            $( "#Rec_Elbow-duct_weight" ).val(Rec_Elbow_duct_weight.toFixed(2));
             //-------------------
         });
-        $("#duct_gage").on('change', function() {
+        $("#Rec_Elbow-duct_gage").on('change', function() {
             // thickness duct_weight change in  duct_gage change
-            $('#thickness').val(thickness[this.value]);
-            $( "#rec-frame-duct_weight" ).val($("#Area").val() * duct_weight[$("#duct_gage").val()]);
+            $('#Rec_Elbow-thickness').val(thickness[this.value]);
+            $( "#Rec_Elbow-duct_weight" ).val(Rec_Elbow_duct_weight.toFixed(2));
         });
-        // ---------------------
-        // =IF(I3=50;
-        $('select#rec-frame-Thickness').on('change', function() {
-            var rec_frame_Width = parseInt($("#rec-frame-Width").val());
-            var rec_frame_Depth = parseInt($("#rec-frame-Depth").val());
-            var rec_frame_Length = parseInt($("#rec-frame-Length").val());
-            console.log(rec_frame_Length);            
-            if ( this.value == 25 ) {
-                var result1 =   ( ( (rec_frame_Width + (50) + rec_frame_Depth + (50)) *.002) * rec_frame_Length);
-                $( "#rec-frame-Area_1_inch" ).val(result1.toFixed(2));
-                $( "#rec-frame-Area_2_inch" ).val(0);
-            }else if(this.value == 50){
-                var result2 = (((rec_frame_Width+(100)+rec_frame_Depth+(100))*.002)*rec_frame_Length)
-                $( "#rec-frame-Area_2_inch" ).val(result2);
-                $( "#rec-frame-Area_1_inch" ).val(0);
-            }else{
-                $( "#rec-frame-Area_1_inch" ).val(0);
-                $( "#rec-frame-Area_2_inch" ).val(0);
-            }
-        });
-        //-------------------------
-        $('select#rec-frame-Cladding').on('change', function() {
-            var rec_frame_Length = parseInt($("#rec-frame-Length").val());
-            var rec_frame_Area = parseInt($("#rec-frame-Area").val());
+        // -------------------------------
+        // -------------------------------- 
+        $('select#Rec_Elbow-Thickness').on('change', function() {
+            var Width = parseFloat($("#Width").val());
+            var Depth = parseFloat($("#Depth").val());
+            var Diameter = parseFloat($("#Diameter").val());
+            var Length = parseFloat($("#Length").val());
 
-            var resultCladding =  rec_frame_Length*1.006+rec_frame_Area*1.006 ;
-            if ( this.value == 1 ) {
-                $( "#rec-frame-Cladding_Area" ).val(resultCladding);
+            var result1 = 2*((Width+Depth+this.value*4)*Length-
+            ((Width+Depth+this.value*4)-(3.147*(this.value+Diameter))*Length))/1000000;
+            if ( this.value == 25 ) {
+                $( "#Rec_Elbow-Area_1_inch" ).val(result1.toFixed(2));
+                $( "#Rec_Elbow-Area_2_inch" ).val(0);
+            }else if(this.value == 50){
+                $( "#Rec_Elbow-Area_2_inch" ).val(result1.toFixed(2));
+                $( "#Rec_Elbow-Area_1_inch" ).val(0);
             }else{
-                $( "#rec-frame-Cladding_Area" ).val(resultCladding);
+                $( "#Rec_Elbow-Area_1_inch" ).val(0);
+                $( "#Rec_Elbow-Area_2_inch" ).val(0);
             }
         });
-        // -----------------------
+        // -----------------------------------
+        $('select#Rec_Elbow-Cladding').on('change', function() {
+            var resultCladding = 0 ;
+            if ( this.value == 1 ) {
+                if ($("select#Rec_Elbow-Thickness").val() == '') {
+                    resultCladding =  $("#Rec_Elbow-area").val() * 1.006 ;
+                    $( "#Rec_Elbow-Cladding_Area" ).val(resultCladding);
+                } else {
+                    resultCladding = ($("#Rec_Elbow-Area_1_inch" ).val() * 1.006) + ($("#Rec_Elbow-Area_2_inch" ).val() * 1.006) ;
+                    $( "#Rec_Elbow-Cladding_Area" ).val(resultCladding.toFixed(4));
+                }
+            }else{
+                $( "#Rec_Elbow-Cladding_Area" ).val(resultCladding);
+            }
+        });
+
+    </script>
+<script>
+    $(document).ready(function(){
+    var result = [];
+    $('#example_1 tr').each(function(){
+        $('td', this).each(function(index, val){
+            if(!result[index]) result[index] = 0;
+            var x = (Number($(val).text()) );
+
+        result[index] += Number(x.toFixed(3));
+        });
+    });
+    $('#example_1').append('<tr class="dark:text-gray-400"></tr>');
+    $(result).each(function(){
+        $('#example_1 tr').last().append('<td class="py-3">'+this+'</td>')
+    });
+    for (let element of [0,1,2,3,4,6,9,11,12,14] ) {
+        $( "#example_1 tr " ).last().find("td:eq("+element+")").text( "-" );
+        
+    }
+    $( "#example_1 tr " ).last().find("td:eq(0)").text( "Totals" );
+
+});
 </script>
-@endpush
+    @endpush
 </x-app-layout>

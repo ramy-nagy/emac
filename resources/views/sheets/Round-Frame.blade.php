@@ -30,17 +30,17 @@
                         <div class="why dark:bg-gray-800">Fram data</div>
                         <label class=" text-sm col-md-4">
                             <span class="text-gray-700 dark:text-gray-400">Diameter(m)</span>
-                            <input type="number" min="0" id="roundframe-diameter" value="0" name="diameter"
+                            <input type="number" step="0.01" min="0" id="roundframe-diameter" value="0" name="diameter"
                                 class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input">
                         </label>
                         <label class=" text-sm col-md-4">
                             <span class="text-gray-700 dark:text-gray-400">Length(m)</span>
-                            <input type="number" min="0" id="roundframe-length" name="length" value="0"
+                            <input type="number" step="0.01" min="0" id="roundframe-length" name="length" value="0"
                                 class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input">
                         </label>
                         <label class=" text-sm col-md-3">
                             <span class="text-gray-700 dark:text-gray-400">Area (m^2)</span>
-                            <input type="number" min="0" value="0" id="roundframe-area" readonly name="area"
+                            <input type="number" step="0.01" min="0" value="0" id="roundframe-area" readonly name="area"
                                 class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input">
                         </label>
                     </div>
@@ -48,17 +48,17 @@
                         <div class="why dark:bg-gray-800" style="width: 250px">Thermal insulation data</div>
                         <label class=" text-sm col-md-5">
                             <span class="text-gray-700 dark:text-gray-400">Thickness</span>
-                            <input type="number" value="25" id="roundframe-Thickness" readonly name="thermal_thickness"
+                            <input type="number" step="0.01" value="25" id="roundframe-Thickness" readonly name="thermal_thickness"
                                 class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input">
                         </label>
                         <label class=" text-sm col-md-3">
                             <span class="text-gray-700 dark:text-gray-400">Area 1 inch</span>
-                            <input type="number" min="0" value="0" id="roundframe-Area_1_inch" readonly name="Area_1_inch"
+                            <input type="number" step="0.01" min="0" value="0" id="roundframe-Area_1_inch" readonly name="Area_1_inch"
                                 class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input">
                         </label>
                         <label class=" text-sm col-md-3">
                             <span class="text-gray-700 dark:text-gray-400">Area 2 inch</span>
-                            <input type="number" min="0" value="0" id="roundframe-Area_2_inch" readonly name="Area_2_inch"
+                            <input type="number" step="0.01" min="0" value="0" id="roundframe-Area_2_inch" readonly name="Area_2_inch"
                                 class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input">
                         </label>
                     </div>
@@ -74,7 +74,7 @@
                         </label>
                         <label class=" text-sm col-md-5">
                             <span class="text-gray-700 dark:text-gray-400">Area (m^2)</span>
-                            <input type="number" min="0" value="0" id="roundframe-Cladding_Area" readonly name="Cladding_Area"
+                            <input type="number" step="0.01" min="0" value="0" id="roundframe-Cladding_Area" readonly name="Cladding_Area"
                                 class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input">
                         </label>
                     </div>
@@ -101,12 +101,12 @@
                         </label>
                         <label class=" text-sm col-md-3">
                             <span class="text-gray-700 dark:text-gray-400">Thickness</span>
-                            <input type="number" readonly id="roundframe-thickness" name="thickness" value="0.701"
+                            <input type="number" step="0.01" readonly id="roundframe-thickness" name="thickness" value="0.701"
                                 class="thickness block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input">
                         </label>
                         <label class=" text-sm col-md-3 ">
                             <span class="text-gray-700 dark:text-gray-400">weight (Kg)</span>
-                            <input type="number" readonly id="roundframe-duct_weight" name="duct_weight" value="0"
+                            <input type="number" step="0.01" readonly id="roundframe-duct_weight" name="duct_weight" value="0"
                                 class="duct_weight block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input">
                         </label>
                     </div>

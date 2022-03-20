@@ -57,17 +57,17 @@
                         </label>
                         <label class=" text-sm col-md-2">
                             <span class="text-gray-700 dark:text-gray-400">Diameter(m)</span>
-                            <input type="number" min="0" id="round-ruct-diameter" value="0" name="diameter"
+                            <input type="number" step="0.01" step="0.01" step="0.01" min="0" id="round-ruct-diameter" value="0" name="diameter"
                                 class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input">
                         </label>
                         <label class=" text-sm col-md-2">
                             <span class="text-gray-700 dark:text-gray-400">Length(m)</span>
-                            <input type="number" min="0" id="round-ruct-length" name="length" value="0"
+                            <input type="number" step="0.01" step="0.01" step="0.01" min="0" id="round-ruct-length" name="length" value="0"
                                 class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input">
                         </label>
                         <label class=" text-sm col-md-3">
                             <span class="text-gray-700 dark:text-gray-400">Area (m^2)</span>
-                            <input type="number" min="0" value="0" id="round-ruct-area" readonly name="area"
+                            <input type="number" step="0.01" step="0.01" step="0.01" min="0" value="0" id="round-ruct-area" readonly name="area"
                                 class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input">
                         </label>
                     </div>
@@ -84,13 +84,13 @@
                         </label>
                         <label class=" text-sm col-md-3">
                             <span class="text-gray-700 dark:text-gray-400">Area 1 inch</span>
-                            <input type="number" min="0" value="0" id="round-ruct-Area_1_inch" readonly
+                            <input type="number" step="0.01" step="0.01" step="0.01" min="0" value="0" id="round-ruct-Area_1_inch" readonly
                                 name="Area_1_inch"
                                 class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input">
                         </label>
                         <label class=" text-sm col-md-3">
                             <span class="text-gray-700 dark:text-gray-400">Area 2 inch</span>
-                            <input type="number" min="0" value="0" id="round-ruct-Area_2_inch" readonly
+                            <input type="number" step="0.01" step="0.01" step="0.01" min="0" value="0" id="round-ruct-Area_2_inch" readonly
                                 name="Area_2_inch"
                                 class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input">
                         </label>
@@ -107,7 +107,7 @@
                         </label>
                         <label class=" text-sm col-md-5">
                             <span class="text-gray-700 dark:text-gray-400">Area (m^2)</span>
-                            <input type="number" min="0" value="0" id="round-ruct-Cladding_Area" readonly
+                            <input type="number" step="0.01" step="0.01" step="0.01" min="0" value="0" id="round-ruct-Cladding_Area" readonly
                                 name="Cladding_Area"
                                 class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input">
                         </label>
@@ -124,13 +124,13 @@
                         </label>
                         <label class=" text-sm col-md-3">
                             <span class="text-gray-700 dark:text-gray-400">Length (m)</span>
-                            <input type="number" min="0" id="round-ruct-Accoustic_Length" name="accoustic_length"
+                            <input type="number" step="0.01" step="0.01" step="0.01" min="0" id="round-ruct-Accoustic_Length" name="accoustic_length"
                                 value="0"
                                 class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input">
                         </label>
                         <label class=" text-sm col-md-3">
                             <span class="text-gray-700 dark:text-gray-400">Area (m^2)</span>
-                            <input type="number" min="0" id="round-ruct-Accoustic_Area" readonly name="Accoustic_Area"
+                            <input type="number" step="0.01" step="0.01" step="0.01" min="0" id="round-ruct-Accoustic_Area" readonly name="Accoustic_Area"
                                 value="0"
                                 class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input">
                         </label>
@@ -158,12 +158,12 @@
                         </label>
                         <label class=" text-sm col-md-3">
                             <span class="text-gray-700 dark:text-gray-400">Thickness</span>
-                            <input type="number" readonly id="round-ruct-thickness" name="thickness" value="0.701"
+                            <input type="number" step="0.01" step="0.01" step="0.01" readonly id="round-ruct-thickness" name="thickness" value="0.701"
                                 class="thickness block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input">
                         </label>
                         <label class=" text-sm col-md-3">
                             <span class="text-gray-700 dark:text-gray-400">weight (Kg)</span>
-                            <input type="number" readonly id="round-ruct-duct_weight" name="duct_weight" value="0"
+                            <input type="number" step="0.01" step="0.01" step="0.01" readonly id="round-ruct-duct_weight" name="duct_weight" value="0"
                                 class="duct_weight block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input">
                         </label>
                     </div>

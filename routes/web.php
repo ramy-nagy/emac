@@ -47,9 +47,20 @@ Route::middleware('auth')->group(function () {
     Route::get('Round_Duct',    [DashboardController::class, 'Round_Duct'])->name('Round.Duct');
     Route::post('RoundDuct',    [DashboardController::class, 'RoundDuct'])->name('RoundDuct');
     
-    Route::get('GetFitting',    [DashboardController::class, 'GetFitting'])->name('GetFitting');
-    Route::post('RoundDuct',    [DashboardController::class, 'RoundDuct'])->name('RoundDuct');
+    // fitting
+    Route::get('Fitting/Rec-elbow',    [DashboardController::class, 'FittingRec_elbow'])->name('Rec-elbow');
+    Route::post('Rec_elbow',    [DashboardController::class, 'Rec_elbow'])->name('Rec_elbow');
+    //
+    Route::get('Fitting/Rec-Reducer',    [DashboardController::class, 'FittingRecReducer'])->name('Rec-Reducer');
+    Route::post('Rec_Reducer',    [DashboardController::class, 'Rec_Reducer'])->name('Rec_Reducer');
+    //
+    Route::get('Fitting/Round-Reducer',    [DashboardController::class, 'FittingRoundReducer'])->name('Round-Reducer');
+    Route::post('Round_Reducer',    [DashboardController::class, 'Round_Reducer'])->name('Round_Reducer');
+    //
+    Route::get('Fitting/transition',     [DashboardController::class, 'FittingTransition'])->name('transition');
+    Route::post('Fitting_Transition',    [DashboardController::class, 'Fitting_Transition'])->name('Fitting_Transition');
 
+    
     Route::get('Rec_Frame',     [DashboardController::class, 'Rec_Frame'])->name('Rec.Frame');
     Route::post('RecFrame',     [DashboardController::class, 'RecFrame'])->name('RecFrame');
     

@@ -72,7 +72,22 @@ class User extends Authenticatable  implements HasMedia
         return $this->hasMany(BellMouse::class);
     }
 
-
+    public function FittingRecElbow()
+    {
+        return $this->hasMany(FittingRecElbow::class);
+    }
+    public function FittingRecReducer()
+    {
+        return $this->hasMany(FittingRecReducer::class);
+    }
+    public function FittingRoundReducer()
+    {
+        return $this->hasMany(FittingRoundReducer::class);
+    }
+    public function FittingTransition()
+    {
+        return $this->hasMany(FittingTransition::class);
+    }
     public function projects()
     {
         return $this->hasMany(Project::class)
