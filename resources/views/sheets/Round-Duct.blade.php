@@ -124,7 +124,7 @@
                         </label>
                         <label class=" text-sm col-md-3">
                             <span class="text-gray-700 dark:text-gray-400">Length (m)</span>
-                            <input type="number" step="0.01" step="0.01" step="0.01" min="0" id="round-ruct-Accoustic_Length" name="accoustic_length"
+                            <input type="number" step="0.01" min="1" id="round-ruct-Accoustic_Length" name="accoustic_length"
                                 value="0"
                                 class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input">
                         </label>
@@ -330,11 +330,13 @@
             $( "#round-ruct-duct_weight" ).val($("#round-ruct-area").val() * duct_weight[$("#round-ruct-duct_gage").val()]);
             //-------------------
             var resultAccoustic = 0 ;
-            if ( $('select#Accoustic').val() == 1 ) {
-            resultAccoustic = ((parseInt($("#Width").val()) + parseInt($("#Depth").val())) *2* (parseInt($("#Accoustic_Length").val())/1000)) ;
-                $( "#Accoustic_Area" ).val(resultAccoustic.toFixed(2));
+            var round_ruct_diameter = parseInt($("#round-ruct-diameter").val());
+            var round_ruct_Accoustic_Length = parseInt($("#round-ruct-Accoustic_Length").val());
+            if ( $('select#round-ruct-Accoustic').val() == 1 ) {
+                resultAccoustic = ((3.14 * round_ruct_diameter + 15 * 2) * round_ruct_Accoustic_Length / 1000 );
+                $( "#round-ruct-Accoustic_Area" ).val(resultAccoustic.toFixed(2));
             }else{
-                $( "#Accoustic_Area" ).val(resultAccoustic);
+                $( "#round-ruct-Accoustic_Area" ).val(resultAccoustic);
             }
         });
         $("#round-ruct-duct_gage").on('change', function() {

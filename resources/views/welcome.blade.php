@@ -37,7 +37,7 @@
             @endif
         </h2>
 
-        
+
         @endauth
     </div>
     @endif
@@ -58,7 +58,6 @@
 
     <!-- Scripts -->
     <script src="{{asset('assets/js/main.js')}}"></script>
-
 </body>
 
 </html>

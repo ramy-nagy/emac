@@ -127,7 +127,7 @@
                     </label>
                     <label class=" text-sm col-md-3">
                         <span class="text-gray-700 dark:text-gray-400">Length (m)</span>
-                        <input type="number" step="0.01" min="0" id="Accoustic_Length" name="accoustic_length" value="0"
+                        <input type="number" step="0.01" min="1" id="Accoustic_Length" name="accoustic_length" value="0"
                             class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input">
                     </label>
                     <label class=" text-sm col-md-3">
